@@ -70,6 +70,7 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 	// Dette er en test, fra JP
+	// Vi tester stadig
 
 	MX_TIM1_Init();
   /* USER CODE END 1 */
