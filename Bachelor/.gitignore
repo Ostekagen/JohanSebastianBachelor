@@ -136,8 +136,8 @@ dkms.conf
 
 # STM32Cube copied library and project folders
 Debug/*
-#MDK-ARM/*
-#EWARM/*
+MDK-ARM/*
+EWARM/*
 # CrossWorks project files
 #!*/*.hzp
 #!*/*.hzs
