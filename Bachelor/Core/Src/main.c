@@ -70,6 +70,8 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 	// Dette er en test, fra JP
+
+	MX_TIM1_Init();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
