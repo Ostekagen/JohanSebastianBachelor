@@ -139,8 +139,8 @@ Debug/*
 MDK-ARM/*
 EWARM/*
 # CrossWorks project files
-!*/*.hzp
-!*/*.hzs
+#!*/*.hzp
+#!*/*.hzs
 
 *.o
 .mxproject
