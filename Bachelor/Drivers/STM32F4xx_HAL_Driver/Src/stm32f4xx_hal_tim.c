@@ -4111,7 +4111,8 @@ HAL_StatusTypeDef HAL_TIM_IC_ConfigChannel(TIM_HandleTypeDef *htim, TIM_IC_InitT
   *            @arg TIM_CHANNEL_4: TIM Channel 4 selected
   * @retval HAL status
   */
-HAL_StatusTypeDef HAL_TIM_PWM_ConfigChannel(TIM_HandleTypeDef *htim,
+HAL_StatusTypeDef
+(TIM_HandleTypeDef *htim,
                                             TIM_OC_InitTypeDef *sConfig,
                                             uint32_t Channel)
 {
