@@ -60,6 +60,20 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define Throttle_Pin GPIO_PIN_0
+#define Throttle_GPIO_Port GPIOC
+#define Battery_Voltage_Pin GPIO_PIN_0
+#define Battery_Voltage_GPIO_Port GPIOA
+#define MDC_Voltage_Pin GPIO_PIN_1
+#define MDC_Voltage_GPIO_Port GPIOA
+#define H1_Pin GPIO_PIN_2
+#define H1_GPIO_Port GPIOA
+#define H3_Pin GPIO_PIN_3
+#define H3_GPIO_Port GPIOA
+#define H2_Pin GPIO_PIN_4
+#define H2_GPIO_Port GPIOC
+#define System_Current_Pin GPIO_PIN_5
+#define System_Current_GPIO_Port GPIOC
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
