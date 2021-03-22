@@ -34,133 +34,133 @@ void pfx_BLDC() // Main function for commutation
 				{
 					case 1 : // 30-60 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 2 : // 60-90 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 3 : // 90-120 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 4 : // 120-150 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 5 : // 150-180 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 6 : // 180-210 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 7 : // 210-240 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 8 : // 240-270 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 9 : // 270-300 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 10 : // 300-330 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 11 : // 330-360 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 12 : // 0-30 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
@@ -179,133 +179,133 @@ void pfx_BLDC() // Main function for commutation
 				{
 					case 1 : // 30-60 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 2 : // 60-90 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 3 : // 90-120 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 4 : // 120-150 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 5 : // 150-180 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 6 : // 180-210 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 7 : // 210-240 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 8 : // 240-270 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 9 : // 270-300 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 10 : // 300-330 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 11 : // 330-360 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
 					case 12 : // 0-30 degrees
 					 	{
-					 		//Timer1Ch1 signal -
-					 		//Timer1Ch1N signal -
-					 		//Timer1Ch2 signal -
-					 		//Timer1Ch2N signal -
-					 		//Timer1Ch3 signal -
-					 		//Timer1Ch3N signal -
+					 		//Timer1Ch1 signal 	- Q1
+					 		//Timer1Ch1N signal - Q4
+					 		//Timer1Ch2 signal 	- Q3
+					 		//Timer1Ch2N signal - Q6
+					 		//Timer1Ch3 signal 	- Q5
+					 		//Timer1Ch3N signal - Q2
 					 	}
 					break;
 
