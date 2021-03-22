@@ -11,9 +11,10 @@
 #include <stdint.h>
 #include "stm32f4xx_hal_tim.h"
 #include "main.h"
+#include "ADC_Measurements.h"
 
 /* External Variables */
-
+extern volatile uint32_t ADC_DMA_array[9];
 
 /* Internal Variables */
 int16_t int16_throttleInput; 	//

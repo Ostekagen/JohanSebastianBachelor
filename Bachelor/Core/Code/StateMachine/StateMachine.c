@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include "stm32f4xx_hal_tim.h"
 #include "main.h"
+#include "MotorPos.h"
 
 /* External Variables */
 extern struct ST_MOTORPOS motorpos // initiating external struct
