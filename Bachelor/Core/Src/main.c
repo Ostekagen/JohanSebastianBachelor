@@ -69,13 +69,22 @@ static void MX_TIM8_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-ADC_HandleTypeDef hadc1;
+
 int test;
 int ON;
-
+extern float BatteryVol; //From ADC_Measurements
+extern float MDCVol; //From ADC_Measurements
+extern float SysCur; //From ADC_Measurements
+extern float H1; //From ADC_Measurements
+extern float H3; //From ADC_Measurements
+extern float H2; //From ADC_Measurements
+extern float Throttle;
 int c, d;
 
-
+ADC_HandleTypeDef hadc1;
+ADC_HandleTypeDef hadc2;
+ADC_HandleTypeDef hadc3;
+DMA_HandleTypeDef hdma_adc1;
 
 /* USER CODE END 0 */
 
@@ -117,29 +126,17 @@ int main(void)
   MX_ADC3_Init();
   MX_TIM8_Init();
   /* USER CODE BEGIN 2 */
-
+  setupMeasurement();
+  HAL_TIM_Base_Start_IT(&htim8);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  if (ON == 1)
-	  {
-		HAL_ADC_Start(&hadc1);
-
-		HAL_ADC_Stop(&hadc1);
-
-		test = HAL_ADC_GetValue(&hadc1);
-
-
-	  }
-
-
   }
   /* USER CODE END 3 */
 }
@@ -565,10 +562,21 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : H1_GPIO_Pin H2_GPIO_Pin H3_GPIO_Pin */
+  GPIO_InitStruct.Pin = H1_GPIO_Pin|H2_GPIO_Pin|H3_GPIO_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+  /* Prevent unused argument(s) compilation warning */
+  //timerInterruptFunction();
+	getMeasurement();
+}
 /* USER CODE END 4 */
 
 /**

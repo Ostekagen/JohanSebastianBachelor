@@ -108,12 +108,12 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     PA0-WKUP     ------> ADC1_IN0
     PA2     ------> ADC1_IN2
     */
-    GPIO_InitStruct.Pin = Throttle_Pin;
+    GPIO_InitStruct.Pin = ADC1_Throttle_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(Throttle_GPIO_Port, &GPIO_InitStruct);
+    HAL_GPIO_Init(ADC1_Throttle_GPIO_Port, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = Battery_Voltage_Pin|H1_Pin;
+    GPIO_InitStruct.Pin = ADC1_Battery_Voltage_Pin|ADC1_H1_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -157,7 +157,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     PC4     ------> ADC2_IN14
     PC5     ------> ADC2_IN15
     */
-    GPIO_InitStruct.Pin = H2_Pin|System_Current_Pin;
+    GPIO_InitStruct.Pin = ADC2_H2_Pin|ADC2_System_Current_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
@@ -201,7 +201,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     PA1     ------> ADC3_IN1
     PA3     ------> ADC3_IN3
     */
-    GPIO_InitStruct.Pin = MDC_Voltage_Pin|H3_Pin;
+    GPIO_InitStruct.Pin = ADC3_MDC_Voltage_Pin|ADC3_H3_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -256,9 +256,9 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
     PA0-WKUP     ------> ADC1_IN0
     PA2     ------> ADC1_IN2
     */
-    HAL_GPIO_DeInit(Throttle_GPIO_Port, Throttle_Pin);
+    HAL_GPIO_DeInit(ADC1_Throttle_GPIO_Port, ADC1_Throttle_Pin);
 
-    HAL_GPIO_DeInit(GPIOA, Battery_Voltage_Pin|H1_Pin);
+    HAL_GPIO_DeInit(GPIOA, ADC1_Battery_Voltage_Pin|ADC1_H1_Pin);
 
     /* ADC1 DMA DeInit */
     HAL_DMA_DeInit(hadc->DMA_Handle);
@@ -288,7 +288,7 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
     PC4     ------> ADC2_IN14
     PC5     ------> ADC2_IN15
     */
-    HAL_GPIO_DeInit(GPIOC, H2_Pin|System_Current_Pin);
+    HAL_GPIO_DeInit(GPIOC, ADC2_H2_Pin|ADC2_System_Current_Pin);
 
     /* ADC2 DMA DeInit */
     HAL_DMA_DeInit(hadc->DMA_Handle);
@@ -318,7 +318,7 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
     PA1     ------> ADC3_IN1
     PA3     ------> ADC3_IN3
     */
-    HAL_GPIO_DeInit(GPIOA, MDC_Voltage_Pin|H3_Pin);
+    HAL_GPIO_DeInit(GPIOA, ADC3_MDC_Voltage_Pin|ADC3_H3_Pin);
 
     /* ADC3 DMA DeInit */
     HAL_DMA_DeInit(hadc->DMA_Handle);
@@ -365,6 +365,9 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
   /* USER CODE END TIM8_MspInit 0 */
     /* Peripheral clock enable */
     __HAL_RCC_TIM8_CLK_ENABLE();
+    /* TIM8 interrupt Init */
+    HAL_NVIC_SetPriority(TIM8_UP_TIM13_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(TIM8_UP_TIM13_IRQn);
   /* USER CODE BEGIN TIM8_MspInit 1 */
 
   /* USER CODE END TIM8_MspInit 1 */
@@ -437,6 +440,9 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* htim_base)
   /* USER CODE END TIM8_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_TIM8_CLK_DISABLE();
+
+    /* TIM8 interrupt DeInit */
+    HAL_NVIC_DisableIRQ(TIM8_UP_TIM13_IRQn);
   /* USER CODE BEGIN TIM8_MspDeInit 1 */
 
   /* USER CODE END TIM8_MspDeInit 1 */

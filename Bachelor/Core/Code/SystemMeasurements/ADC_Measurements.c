@@ -20,13 +20,13 @@ ADC_HandleTypeDef hadc3;
 int arrayPos = 0;
 
 /* ADC data arrays */
-float ACCur_1[500] = {0};
-float ACCur_2[500] = {0};
-float ACCur_3[500] = {0};
-float ACVol_1[500] = {0};
-float ACVol_2[500] = {0};
-float ACVol_3[500] = {0};
-float DCVol_1[500] = {0};
+float H1 = 0;
+float H3 = 0;
+float H2 = 0;
+float BatteryVol;
+float MDCVol = 0;
+float SysCur = 0;
+float Throttle = 0;
 
 /* ADC data offset */
 float ACCur_1_Offset = 0.0f;
@@ -83,21 +83,12 @@ void getOffset(float OffV1,float OffV2,float OffV3,float OffC1,float OffC2,float
 /* read ADC values and converts to voltage and current values in float */
 void getMeasurement()
 {
-	/* Set array position */
-	if (arrayPos >= 499 )
-		{
-			arrayPos = 0;
-		}
-	else
-		{
-			arrayPos++;
-		}
 	/* Calculate Value */
-	ACVol_1[arrayPos] = ((float)ADC_DMA_array[0]*ACVol_1_multi)-ACVol_1_Offset;  	// channel 0 PIN PA0 dma 0
-	ACVol_2[arrayPos] = ((float)ADC_DMA_array[3]*ACVol_2_multi)-ACVol_2_Offset;		// channel 1 PIN PA1 dma 3
-	ACVol_3[arrayPos] = ((float)ADC_DMA_array[6]*ACVol_3_multi)-ACVol_3_Offset;		// channel 4 PIN PA4 dma 6
-	ACCur_1[arrayPos] = ((float)ADC_DMA_array[1]*ACCur_1_multi)-ACCur_1_Offset;		// channel 8 PIN PB0 dma 1
-	ACCur_2[arrayPos] = ((float)ADC_DMA_array[4]*ACCur_2_multi)-ACCur_2_Offset;		// channel 10 PIN PC0 dma 4
-	ACCur_3[arrayPos] = ((float)ADC_DMA_array[7]*ACCur_3_multi)-ACCur_3_Offset;		// channel 11 PIN PC1 dma 7
-	DCVol_1[arrayPos] = ((float)ADC_DMA_array[2]-DCVol_1_Offset)*DCVol_1_multi;		// channel 12 PIN PC12 dma 2
+	BatteryVol = (float)ADC_DMA_array[0];  	// Battery Voltage
+	MDCVol = (float)ADC_DMA_array[3];		// MDC Voltage
+	SysCur = (float)ADC_DMA_array[6];		// system Current
+	H1 = (float)ADC_DMA_array[1];		// H1
+	H3 = (float)ADC_DMA_array[4];		// H3
+	H2 = (float)ADC_DMA_array[5];		// H2
+	Throttle = (float)ADC_DMA_array[2];		// Throttle
 }
