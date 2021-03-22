@@ -19,7 +19,7 @@
 int16_t int16_throttleInput; 	//
 int16_t int16_throttleOffset = 1100; 	//
 int16_t int16_throttleMax= 2485; 	//
-int8_t uint8_throttleOutput //
+int8_t uint8_throttleOutput; //
 
 /* Start Code here */
 void pfx_Throttle() // Main function for commutation

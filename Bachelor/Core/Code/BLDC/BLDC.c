@@ -12,6 +12,7 @@
 #include "stdio.h"
 #include <stdint.h>
 #include "stm32f4xx_hal_tim.h"
+#include "BLDC.h"
 #include "Ramp.h"
 #include "MotorPos.h"
 #include "main.h"
