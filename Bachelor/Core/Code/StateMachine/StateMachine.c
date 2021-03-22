@@ -14,7 +14,7 @@
 #include "MotorPos.h"
 
 /* External Variables */
-extern struct ST_MOTORPOS motorpos // initiating external struct
+extern struct ST_MOTORPOS motorpos; // initiating external struct
 
 /* Internal Variables */
 int8_t State = 0;
