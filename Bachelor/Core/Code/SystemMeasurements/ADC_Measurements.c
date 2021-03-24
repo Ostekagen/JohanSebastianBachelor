@@ -19,6 +19,7 @@ ADC_HandleTypeDef hadc3;
 /* data arrays position*/
 int arrayPos = 0;
 
+
 /* ADC data arrays */
 float H1 = 0;
 float H3 = 0;
@@ -91,4 +92,5 @@ void getMeasurement()
 	H3 = (float)ADC_DMA_array[4];		// H3
 	H2 = (float)ADC_DMA_array[5];		// H2
 	Throttle = (float)ADC_DMA_array[2];		// Throttle
+
 }
