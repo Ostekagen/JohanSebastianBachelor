@@ -13,6 +13,9 @@
 //#include "stm32f4xx_hal_tim.h"	//Laver fejl i drivers
 #include "main.h"
 #include "MotorPos.h"
+#include "Throttle.h"
+#include "Error.h"
+#include "Brake.h"
 
 /* External Variables */
 extern struct ST_MOTORPOS motorpos; // initiating external struct
@@ -42,6 +45,10 @@ void pfx_stateInterruptFunction()
 					 		 	{
 					 		 		State = 2;
 					 		 	}
+					 		else if (pfx_brake() != 0)
+					 			{
+					 				State = 0;
+					 			}
 					 		else if (pfx_Throttle() != 0)
 					 			{
 					 				State = 1;
@@ -56,6 +63,10 @@ void pfx_stateInterruptFunction()
 					 		 	{
 					 		 		State = 2;
 					 		 	}
+							if (pfx_brake() !=0)
+								{
+									State = 0;
+								}
 					 		pfx_BLDC();
 						}
 
@@ -72,7 +83,10 @@ void pfx_stateInterruptFunction()
 					break;
 
 					default :
-					State = 2;
+						{
+							State = 2;
+						}
+
 				}
 	}
 
