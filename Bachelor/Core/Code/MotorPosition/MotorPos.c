@@ -11,6 +11,7 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdint.h>
+
 /* Timer: hvilken timer må jeg bruge?
  #include "stm32f4xx_hal_tim.h"
 
@@ -25,7 +26,7 @@ struct ST_MOTORPOS
 uint8_t uint8_position;
 uint8_t uint8_scheme;
 uint8_t uint8_positionOld;
-} motorpos;
+} motorpos; // skal initialiseres til 0!
 
 uint8_t Hal1 = 0;
 uint8_t Hal2 = 0;
@@ -34,7 +35,7 @@ uint32_t commutationTime = 0; // OVERFLOW PROTECTION? Ikke nødvendigt for bruge
 
 /*function*/
 
-pfx_MotorPos() // main function
+struct motorpos pfx_MotorPos() // main function
 {
 
 
@@ -48,27 +49,27 @@ if(Hal1 == 1 && Hal2 == 1 && Hal3 == 1)
 	ST_MOTORPOS.uint8_positionOld = ST_MOTORPOS.uint8_position;
 	ST_MOTORPOS.uint8_position = 1;
 	}
-else if(Hal1 == 1 && Hal2 == 1 && Hal3 == 1)
+else if(Hal1 == 0 && Hal2 == 1 && Hal3 == 1)
 	{
 	ST_MOTORPOS.uint8_positionOld = ST_MOTORPOS.uint8_position;
 	ST_MOTORPOS.uint8_position = 3;
 	}
-else if(Hal1 == 1 && Hal2 == 1 && Hal3 == 1)
+else if(Hal1 == 0 && Hal2 == 0 && Hal3 == 1)
 	{
 	ST_MOTORPOS.uint8_positionOld = ST_MOTORPOS.uint8_position;
 	ST_MOTORPOS.uint8_position = 5;
 	}
-else if(Hal1 == 1 && Hal2 == 1 && Hal3 == 1)
+else if(Hal1 == 0 && Hal2 == 0 && Hal3 == 0)
 	{
 	ST_MOTORPOS.uint8_positionOld = ST_MOTORPOS.uint8_position;
 	ST_MOTORPOS.uint8_position = 7;
 	}
-else if(Hal1 == 1 && Hal2 == 1 && Hal3 == 1)
+else if(Hal1 == 1 && Hal2 == 0 && Hal3 == 0)
 	{
 	ST_MOTORPOS.uint8_positionOld = ST_MOTORPOS.uint8_position;
 	ST_MOTORPOS.uint8_position = 9;
 	}
-else if(Hal1 == 1 && Hal2 == 1 && Hal3 == 1)
+else if(Hal1 == 1 && Hal2 == 1 && Hal3 == 0)
 	{
 	ST_MOTORPOS.uint8_positionOld = ST_MOTORPOS.uint8_position;
 	ST_MOTORPOS.uint8_position = 11;
