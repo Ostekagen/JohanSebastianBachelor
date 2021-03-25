@@ -8,6 +8,6 @@
 #ifndef CODE_BRAKE_BRAKE_H_
 #define CODE_BRAKE_BRAKE_H_
 
-void Brake();
+void pfx_brake();
 
 #endif /* CODE_BRAKE_BRAKE_H_ */
