@@ -2,7 +2,7 @@
  * MotorPos.h
  *
  *  Created on: Mar 22, 2021
- *      Author: kenne
+ *      Author: Jens Peter Nebsbjerg
  */
 
 #ifndef CODE_MOTORPOSITION_MOTORPOS_H_
