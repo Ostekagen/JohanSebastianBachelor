@@ -28,11 +28,11 @@ void pfx_stateInterruptFunction()
 	{
 		pfx_MotorPos();
 
-		if (pfx_Error() != 0)
+		if (pfx_error() != 0)
 			{
 				State = 2;
 			}
-		if (pfx_Brake() != 0)
+		if (pfx_brake() != 0)
 			{
 				State = 0;
 			}
@@ -41,7 +41,7 @@ void pfx_stateInterruptFunction()
 				{
 					case 0 : // Standby Mode
 					 	{
-					 		if (pfx_Error() != 0)
+					 		if (pfx_error() != 0)
 					 		 	{
 					 		 		State = 2;
 					 		 	}
@@ -59,7 +59,7 @@ void pfx_stateInterruptFunction()
 
 					case 1 : // Manual Mode
 						{
-							if (pfx_Error() != 0)
+							if (pfx_error() != 0)
 					 		 	{
 					 		 		State = 2;
 					 		 	}
@@ -74,7 +74,7 @@ void pfx_stateInterruptFunction()
 
 					case 2 : // Error Mode
 						{
-							if (pfx_Error() == 0)
+							if (pfx_error() == 0)
 								{
 									State = 0;
 								}
