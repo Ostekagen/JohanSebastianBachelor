@@ -33,9 +33,11 @@ uint8_t Hal2 = 0;
 uint8_t Hal3 = 0;
 uint32_t commutationTime = 0; // OVERFLOW PROTECTION? Ikke nødvendigt for bruges kun i hurtig-mode?
 
+
+
 /*function*/
 
-struct motorpos pfx_MotorPos() // main function
+struct ST_MOTORPOS pfx_MotorPos() // main function
 {
 
 
