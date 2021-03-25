@@ -8,6 +8,7 @@
 
 /* includes */
 
+#include "main.h"
 #include <stdio.h>
 #include <stdint.h>
 
@@ -15,10 +16,11 @@
  /*Define*/
 struct ST_MOTORPOS
 {
-uint8_t uint8_position = 0;
-uint8_t uint8_scheme = 0;
-uint8_t uint8_positionOld = 0;
-}
+uint8_t uint8_position;
+uint8_t uint8_scheme;
+uint8_t uint8_positionOld;
+} motorpos;
+
 
 uint8_t Hal1 = 0;
 uint8_t Hal2 = 0;
