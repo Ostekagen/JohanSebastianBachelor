@@ -11,6 +11,12 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdint.h>
+/* Timer: hvilken timer må jeg bruge?
+ #include "stm32f4xx_hal_tim.h"
+
+TIM_HandleTypeDef htim1;
+TIM_OC_InitTypeDef sConfigOC;
+ */
 
 
  /*Define*/
@@ -21,20 +27,20 @@ uint8_t uint8_scheme;
 uint8_t uint8_positionOld;
 } motorpos;
 
-
 uint8_t Hal1 = 0;
 uint8_t Hal2 = 0;
 uint8_t Hal3 = 0;
-uint32_t commutationTime = 0; // OVERFLOW PROTECTION? Ikke nødvendigt for bruges kun i hurtig-mode!
+uint32_t commutationTime = 0; // OVERFLOW PROTECTION? Ikke nødvendigt for bruges kun i hurtig-mode?
 
 /*function*/
 
 pfx_MotorPos() // main function
 {
 
-Hal1 = // read value from gpio-pin
-Hal2 = // read value from gpio-pin
-Hal3 = // read value from gpio-pin
+
+Hal1 = HAL_GPIO_ReadPin(GPIOx, GPIO_Pin) // read value from gpio-pin
+Hal2 = HAL_GPIO_ReadPin(GPIOx, GPIO_Pin)
+Hal3 = HAL_GPIO_ReadPin(GPIOx, GPIO_Pin)
 
 
 if(Hal1 == 1 && Hal2 == 1 && Hal3 == 1)
