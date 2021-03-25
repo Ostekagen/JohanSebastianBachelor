@@ -94,6 +94,20 @@
                                     <listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bachelor/Core/Code/SystemMeasurements}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bachelor/Core/Code/BLDC}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bachelor/Core/Code/Brake}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bachelor/Core/Code/MotorPosition}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bachelor/Core/Code/PWM}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bachelor/Core/Code/Ramp}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bachelor/Core/Code/StateMachine}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/Bachelor/Core/Code/Throttle}&quot;"/>
                                     								
                                 </option>
                                 								
