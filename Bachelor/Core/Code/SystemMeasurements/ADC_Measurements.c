@@ -19,6 +19,7 @@ ADC_HandleTypeDef hadc3;
 /* data arrays position*/
 int arrayPos = 0;
 
+
 /* ADC data arrays */
 float H1 = 0;
 float H3 = 0;
@@ -26,7 +27,7 @@ float H2 = 0;
 float BatteryVol;
 float MDCVol = 0;
 float SysCur = 0;
-float Throttle = 0;
+int Throttle = 0;
 
 /* ADC data offset */
 float ACCur_1_Offset = 0.0f;
@@ -90,5 +91,6 @@ void getMeasurement()
 	H1 = (float)ADC_DMA_array[1];		// H1
 	H3 = (float)ADC_DMA_array[4];		// H3
 	H2 = (float)ADC_DMA_array[5];		// H2
-	Throttle = (float)ADC_DMA_array[2];		// Throttle
+	Throttle = ADC_DMA_array[2];		// Throttle
+
 }

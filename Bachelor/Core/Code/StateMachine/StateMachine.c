@@ -1,3 +1,4 @@
+
 /*
  * StateMachine.c
  *
@@ -9,12 +10,12 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdint.h>
-#include "stm32f4xx_hal_tim.h"
+//#include "stm32f4xx_hal_tim.h"	//Laver fejl i drivers
 #include "main.h"
 #include "MotorPos.h"
 
 /* External Variables */
-extern struct ST_MOTORPOS motorpos // initiating external struct
+extern struct ST_MOTORPOS motorpos; // initiating external struct
 
 /* Internal Variables */
 int8_t State = 0;
@@ -77,3 +78,4 @@ void pfx_stateInterruptFunction()
 
 
 
+>>>>>>> branch 'main' of https://github.com/Ostekagen/JohanSebastianBachelor.git

@@ -9,21 +9,22 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdint.h>
-#include "stm32f4xx_hal_tim.h"
+//#include "stm32f4xx_hal_tim.h"	// Laver fejl i drivers
 #include "main.h"
 #include "ADC_Measurements.h"
 
 /* External Variables */
-extern volatile uint32_t ADC_DMA_array[9];
+extern volatile uint32_t ADC_DMA_array[9]; // Er det rigtig? kalder du ikke det 9 tal i arrayet? Mvh Rasmus
+
 
 /* Internal Variables */
 int16_t int16_throttleInput; 	//
 int16_t int16_throttleOffset = 1100; 	//
 int16_t int16_throttleMax= 2485; 	//
-int8_t uint8_throttleOutput; //
+uint8_t uint8_throttleOutput; //
 
 /* Start Code here */
-void pfx_Throttle() // Main function for commutation
+int pfx_Throttle() // Main function for commutation
 {
 	/* Collecting ADC value from throttle*/
 	int16_throttleInput = ADC_DMA_array[2];
