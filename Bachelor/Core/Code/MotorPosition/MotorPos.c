@@ -11,6 +11,7 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdint.h>
+#include "MotorPos.h"
 
 /* Timer: hvilken timer må jeg bruge?
  #include "stm32f4xx_hal_tim.h"
@@ -21,12 +22,7 @@ TIM_OC_InitTypeDef sConfigOC;
 
 
  /*Define*/
-struct ST_MOTORPOS
-{
-uint8_t uint8_position;
-uint8_t uint8_scheme;
-uint8_t uint8_positionOld;
-} motorpos; // skal initialiseres til 0!
+
 
 uint8_t Hal1 = 0;
 uint8_t Hal2 = 0;
