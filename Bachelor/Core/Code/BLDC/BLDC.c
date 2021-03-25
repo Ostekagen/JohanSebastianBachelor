@@ -164,12 +164,15 @@ void pfx_BLDC() // Main function for commutation
 					break;
 
 					default :
-							//Timer1Ch1 	= 5000;	(Turned off)
-							//Timer1Ch1N 	= 5000; (Turned off)
-							//Timer1Ch2 	= 5000; (Turned off)
-							//Timer1Ch2N 	= 5000; (Turned off)
-							//Timer1Ch3 	= 5000; (Turned off)
-							//Timer1Ch3N 	= 5000; (Turned off)
+					{
+						//Timer1Ch1 	= 5000;	(Turned off)
+						//Timer1Ch1N 	= 5000; (Turned off)
+						//Timer1Ch2 	= 5000; (Turned off)
+						//Timer1Ch2N 	= 5000; (Turned off)
+						//Timer1Ch3 	= 5000; (Turned off)
+						//Timer1Ch3N 	= 5000; (Turned off)
+					}
+
 				}
 		}
 	else if(motorpos.uint8_scheme ==2) // 12 Commutation Strategy
@@ -309,13 +312,15 @@ void pfx_BLDC() // Main function for commutation
 					break;
 
 					default :
+						{
 							//Timer1Ch1 	= 5000; (Turned off)
 							//Timer1Ch1N 	= 5000; (Turned off)
 							//Timer1Ch2 	= 5000; (Turned off)
 							//Timer1Ch2N 	= 5000; (Turned off)
 							//Timer1Ch3 	= 5000; (Turned off)
 							//Timer1Ch3N 	= 5000; (Turned off)
+						}
 				}
 		}
 }
->>>>>>> branch 'main' of https://github.com/Ostekagen/JohanSebastianBachelor.git
+

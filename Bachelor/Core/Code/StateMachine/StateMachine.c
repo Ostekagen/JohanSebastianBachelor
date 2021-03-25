@@ -78,4 +78,4 @@ void pfx_stateInterruptFunction()
 
 
 
->>>>>>> branch 'main' of https://github.com/Ostekagen/JohanSebastianBachelor.git
+
