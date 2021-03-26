@@ -46,7 +46,7 @@ Hal2 = HAL_GPIO_ReadPin(GPIOB, H2_GPIO_Pin);
 Hal3 = HAL_GPIO_ReadPin(GPIOB, H3_GPIO_Pin);
 
 
-if(Hal1 == 1 && Hal2 == 1 && Hal3 == 1)
+if(Hal1 == 1 && Hal2 == 1 && Hal3 == 1) // see truth table
 	{
 	motorpos.uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 1;
@@ -78,8 +78,9 @@ else if(Hal1 == 1 && Hal2 == 1 && Hal3 == 0)
 	}
 else
 	{
-	// pwm-stop?
-	//motorpos.uint8_position = 0;?
+	TIM1->CCR1 = 5000;					// Duty cycle of zero to all three PWMs
+	TIM1->CCR2 = 5000;					//
+	TIM1->CCR3 = 5000;					//
 	}
 
 /*30 degrees commutation*/
@@ -110,7 +111,7 @@ if(motorpos.uint8_positionOld != motorpos.uint8_position) // If commutation happ
 	sinceLastRun = 0;
 }
 
-if( motorpos.uint8_position % 2 != 0) // if motorposition is ueven increment is allowed
+if( motorpos.uint8_position % 2 != 0) // if motorposition is odd incrementation is allowed
 {
 	if (sinceLastRun + sinceLastRun >= sinceLastComm)
 	{
