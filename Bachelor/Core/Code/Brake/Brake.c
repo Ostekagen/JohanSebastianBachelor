@@ -1,11 +1,37 @@
-// -----------------------------------------
-// Brake Function - V 0.01
-// --------
-// ToDos
-// Setup signal from brake - replace temp variable
-// -----------------------------------------
+/*
+ * Brake.c
+ *
+ *  Created on: Mar 22, 2021
+ *      Author: Kenneth Meier Jensen
+ */
 
-void Brake()
-{
+/* Includes */
+#include <math.h>
+#include <math.h>
+#include "stdio.h"
+#include <stdint.h>
+#include "BLDC.h"
+#include "Ramp.h"
+#include "MotorPos.h"
+#include "main.h"
 
-}
+/* External Variables */
+int8_t int8_brakeOutput;
+
+/* Internal Variables */
+
+/* Start Code Here */
+
+int8_t pfx_brake() // Brake Check Function
+	{
+		if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12) != 0) 		// Read Brake Input GPIO PIN
+			{
+				int8_brakeOutput = 1;						// Brake Activated
+			}
+		else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12) == 0)	// Read Brake Input GPIO PIN
+			{
+				int8_brakeOutput = 0;						// Brake Inactive
+			}
+
+		return int8_brakeOutput;							// Return Brake Info
+	}

@@ -14,7 +14,7 @@
 #include "ADC_Measurements.h"
 
 /* External Variables */
-extern volatile uint32_t ADC_DMA_array[]; // Er det rigtig? kalder du ikke det 9 tal i arrayet? Mvh Rasmus
+extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values
 
 
 /* Internal Variables */

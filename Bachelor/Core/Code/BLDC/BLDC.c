@@ -22,7 +22,7 @@ extern struct ST_MOTORPOS motorpos; // initiating external struct
 /* Internal Variables */
 float f_dutyCap; // Setting internal variable for dute cycle
 
-/* Start Code here */
+/* Start Code Here */
 void pfx_BLDC() // Main function for commutation
 {
 	f_dutyCap = pfx_Ramp(motorpos.uint8_scheme);
