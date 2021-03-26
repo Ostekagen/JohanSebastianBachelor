@@ -49,7 +49,7 @@ void pfx_stateInterruptFunction()
 					 			{
 					 				State = 0;
 					 			}
-					 		else if (pfx_Throttle() != 0)
+					 		else if (pfx_Throttle() > 1200) // 1200 er en ca værdi for hvornår throttle er aktiveret. Den skal præciseres
 					 			{
 					 				State = 1;
 					 			}
