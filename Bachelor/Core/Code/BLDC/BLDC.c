@@ -25,7 +25,7 @@ float f_dutyCap; // Setting internal variable for dute cycle
 /* Start Code Here */
 void pfx_BLDC() // Main function for commutation
 {
-	f_dutyCap = pfx_Ramp(motorpos.uint8_scheme);
+	f_dutyCap = pfx_ramp(motorpos.uint8_scheme);
 
 	if(motorpos.uint8_scheme == 1) // 6 Commutation Strategy (Outgoing PWM)
 		{
