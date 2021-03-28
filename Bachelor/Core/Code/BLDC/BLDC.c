@@ -146,7 +146,7 @@ void pfx_BLDC() // Main function for commutation
 
 				}
 		}
-	else if(motorpos.uint8_scheme ==2) // 12 Commutation Strategy
+	else if(motorpos.uint8_scheme ==2) // 12 Commutation Strategy (PWM_On_PWM)
 		{
 			switch(motorpos.uint8_position)
 				{
