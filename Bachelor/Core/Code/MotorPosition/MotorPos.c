@@ -19,10 +19,10 @@
 uint8_t Hal1 = 0;
 uint8_t Hal2 = 0;
 uint8_t Hal3 = 0;
-uint32_t commutationTime = 0; // OVERFLOW PROTECTION? Ikke nødvendigt for bruges kun i hurtig-mode?
+uint16_t commutationTime = 0; // OVERFLOW PROTECTION? Ikke nødvendigt for bruges kun i hurtig-mode?
 
-uint32_t SchemeValue1 = 2500; // TBD
-uint32_t SchemeValue2 = 2000; // TBD
+uint16_t SchemeValue1 = 2500; // TBD
+uint16_t SchemeValue2 = 2000; // TBD
 
 uint16_t maxValue = 65535;// timer 6 is a 16-bit counter
 uint16_t timerValue = 0;
