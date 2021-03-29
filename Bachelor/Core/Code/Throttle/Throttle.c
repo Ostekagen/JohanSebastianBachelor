@@ -29,11 +29,11 @@ int pfx_Throttle() // Main function for commutation
 	/* Collecting ADC value from throttle*/
 	int16_throttleInput = ADC_DMA_array[2];
 	/* Calculating output value */
-	uint8_throttleOutput = (int16_throttleInput - int16_throttleOffset)/((int16_throttleMax - int16_throttleOffset)/(100));
-	/* Returning output value between 0-100 */
-	if (uint8_throttleOutput > 100)
+	uint8_throttleOutput = (int16_throttleInput - int16_throttleOffset)/((int16_throttleMax - int16_throttleOffset)/(1000));
+	/* Returning output value between 0-1000 */
+	if (uint8_throttleOutput > 1000)
 		{
-			uint8_throttleOutput = 100;
+			uint8_throttleOutput = 1000;
 			return uint8_throttleOutput;
 		}
 	else if (uint8_throttleOutput < 0)

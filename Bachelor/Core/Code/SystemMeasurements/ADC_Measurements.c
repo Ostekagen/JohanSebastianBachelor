@@ -1,8 +1,8 @@
 /**
  * ADC_Measurements.c
  *
- *  Created on: Oct 22, 2019
- *      Author: Jan Michael Sønderby
+ *  Created on: Mar 26, 2021
+ *      Author: Rasmus Bank Mikkelsen
  */
 
 #include <math.h>
@@ -17,35 +17,8 @@ ADC_HandleTypeDef hadc2;
 ADC_HandleTypeDef hadc3;
 
 /* data arrays position*/
-int arrayPos = 0;
 
-
-/* ADC data arrays */
-float H1 = 0;
-float H3 = 0;
-float H2 = 0;
-float BatteryVol;
-float MDCVol = 0;
-float SysCur = 0;
-int Throttle = 0;
-
-/* ADC data offset */
-float ACCur_1_Offset = 0.0f;
-float ACCur_2_Offset = 0.0f;
-float ACCur_3_Offset = 0.0f;
-float ACVol_1_Offset = 0.0f;
-float ACVol_2_Offset = 0.0f;
-float ACVol_3_Offset = 0.0f;
-float DCVol_1_Offset = 0.0f;
-
-/* ADC data multiplier */
-float ACCur_1_multi = 0.0008f;    //Slope value of the trendline found through testing
-float ACCur_2_multi = 0.0008f;
-float ACCur_3_multi = 0.0008f;
-float ACVol_1_multi = 0.0008f;
-float ACVol_2_multi = 0.0008f;
-float ACVol_3_multi = 0.0008f;
-float DCVol_1_multi = 0.0008f;
+struct SYSMEAS{int16_t int16_batteryVol;int16_t int16_hallValue;int16_t motorVolValue;}SystemMeasurements;
 
 /* ADC DMA Triple regular simultaneous mode samples memory*/
 volatile uint32_t ADC_DMA_array[6];
@@ -73,25 +46,13 @@ void setupMeasurement()
 
 }
 
-/* get new Offset */
-void getOffset(float OffV1,float OffV2,float OffV3,float OffC1,float OffC2,float OffC3)
-{
-	ACCur_1_Offset = OffC1;
-	ACCur_2_Offset = OffC2;
-	ACCur_3_Offset = OffC3;
-	ACVol_1_Offset = OffV1;
-	ACVol_2_Offset = OffV2;
-	ACVol_3_Offset = OffV3;
-}
 /* read ADC values and converts to voltage and current values in float */
 void getMeasurement()
 {
-	/* Calculate Value */
-	BatteryVol = ADC_DMA_array[0];  	// Battery Voltage
-	MDCVol = ADC_DMA_array[3];		// MDC Voltage
-	SysCur = ADC_DMA_array[6];		// system Current
-	Throttle = ADC_DMA_array[2];		// Throttle
 
+	SystemMeasurements.int16_hallValue = ADC_DMA_array[1];		// TODO: find offset og træk det fra
+	SystemMeasurements.motorVolValue = ADC_DMA_array[2];
+	SystemMeasurements.int16_batteryVol = ADC_DMA_array[3];
 }
 
 

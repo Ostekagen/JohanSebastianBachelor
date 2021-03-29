@@ -23,8 +23,8 @@ uint8_t uint8_throttleOutput;
 /* Internal Variables */
 int counter;
 float f_lastOutput;
-float f_gain1 = 0.00033f;
-float f_gain2 = 0.001;
+float f_gain1 = 1.00033f;
+float f_gain2 = 1.001;
 
 /* Start Code Here */
 
@@ -48,5 +48,32 @@ float pfx_ramp(uint8_t uint8_scheme)
 
 
 */
+
+		uint8_throttleOutput = pfx_Throttle();
+		if(uint8_scheme == 1)
+		{
+			if (f_lastOutput < uint8_throttleOutput)
+			{
+				f_lastOutput = f_lastOutput*f_gain1;
+			}
+			else if (f_lastOutput >= uint8_throttleOutput)
+			{
+				f_lastOutput = uint8_throttleOutput;
+			}
+		}
+		else if (uint8_scheme == 2)
+		{
+			if (f_lastOutput < uint8_throttleOutput)
+			{
+				f_lastOutput = f_lastOutput*f_gain2;	// Skal være anderledes end den anden
+			}
+			else if (f_lastOutput >= uint8_throttleOutput)
+			{
+				f_lastOutput = uint8_throttleOutput;
+			}
+		}
+
+		f_dutyCap = f_lastOutput/1000;
+
 		return f_dutyCap;
 	}
