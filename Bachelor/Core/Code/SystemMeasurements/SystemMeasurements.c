@@ -49,6 +49,8 @@ struct ST_SYSMEAS pfx_getMeasurement() // Read ADC values and converts to voltag
 	systemmeasurements.int16_hallValue = ADC_DMA_array[1];		// TODO: find offset og træk det fra
 	systemmeasurements.motorVolValue = ADC_DMA_array[2];
 	systemmeasurements.int16_batteryVol = ADC_DMA_array[3];
+
+	 return systemmeasurements;
 }
 
 
