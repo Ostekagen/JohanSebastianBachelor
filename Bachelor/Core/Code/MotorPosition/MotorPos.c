@@ -19,14 +19,14 @@ TIM_OC_InitTypeDef sConfigOC;
 
  /*Define*/
 
-uint8_t Hal1 = 0;
-uint8_t Hal2 = 0;
-uint8_t Hal3 = 0;
+uint8_t hal1 = 0;
+uint8_t hal2 = 0;
+uint8_t hal3 = 0;
 uint8_t uint8_positionOld = 0;
 uint16_t commutationTime = 0; // OVERFLOW PROTECTION? Ikke nødvendigt for bruges kun i hurtig-mode?
 
-uint16_t SchemeValue1 = 2500; // TBD
-uint16_t SchemeValue2 = 2000; // TBD
+uint16_t schemeValue1 = 2500; // TBD
+uint16_t schemeValue2 = 2000; // TBD
 
 uint16_t maxValue = 65535;// timer 6 is a 16-bit counter
 uint16_t timerValue = 0;
@@ -42,37 +42,37 @@ struct ST_MOTORPOS{uint8_t uint8_position;uint8_t uint8_scheme;}motorpos={0, 0};
 struct ST_MOTORPOS pfx_MotorPos() // main function
 {
 
-Hal1 = HAL_GPIO_ReadPin(GPIOC, H1_GPIO_Pin); // read value from gpio-pin
-Hal2 = HAL_GPIO_ReadPin(GPIOC, H2_GPIO_Pin);
-Hal3 = HAL_GPIO_ReadPin(GPIOC, H3_GPIO_Pin);
+hal1 = HAL_GPIO_ReadPin(GPIOC, H1_GPIO_Pin); // read value from gpio-pin (5v tolerant)
+hal2 = HAL_GPIO_ReadPin(GPIOC, H2_GPIO_Pin);
+hal3 = HAL_GPIO_ReadPin(GPIOC, H3_GPIO_Pin);
 
 
-if(Hal1 == 1 && Hal2 == 1 && Hal3 == 1 && motorpos.uint8_position != 2 ) // see truth table
+if(hal1 == 1 && hal2 == 1 && hal3 == 1 && motorpos.uint8_position != 2 ) // see truth table
 	{
 	uint8_positionOld = motorpos.uint8_position; // save old
 	motorpos.uint8_position = 1; // write new
 	}
-else if(Hal1 == 0 && Hal2 == 1 && Hal3 == 1 && motorpos.uint8_position != 4)
+else if(hal1 == 0 && hal2 == 1 && hal3 == 1 && motorpos.uint8_position != 4)
 	{
 	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 3;
 	}
-else if(Hal1 == 0 && Hal2 == 0 && Hal3 == 1 && motorpos.uint8_position != 6)
+else if(hal1 == 0 && hal2 == 0 && hal3 == 1 && motorpos.uint8_position != 6)
 	{
 	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 5;
 	}
-else if(Hal1 == 0 && Hal2 == 0 && Hal3 == 0 && motorpos.uint8_position != 8)
+else if(hal1 == 0 && hal2 == 0 && hal3 == 0 && motorpos.uint8_position != 8)
 	{
 	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 7;
 	}
-else if(Hal1 == 1 && Hal2 == 0 && Hal3 == 0 && motorpos.uint8_position != 10)
+else if(hal1 == 1 && hal2 == 0 && hal3 == 0 && motorpos.uint8_position != 10)
 	{
 	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 9;
 	}
-else if(Hal1 == 1 && Hal2 == 1 && Hal3 == 0 && motorpos.uint8_position != 12)
+else if(hal1 == 1 && hal2 == 1 && hal3 == 0 && motorpos.uint8_position != 12)
 	{
 	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 11;
@@ -84,8 +84,8 @@ else
 
 /*30 degrees commutation*/
 
-timerValueOld = timerValue; // save old
-timerValue = __HAL_TIM_GetCounter(&htim6); //_HAL_TIM_GetCounter(&htim6); // save new TIM6->CNT;
+timerValueOld = timerValue; // save old timer value
+timerValue = __HAL_TIM_GetCounter(&htim6);  // save new timer value
 
 
 if(timerValue < timerValueOld) // in case of overflow
@@ -115,17 +115,17 @@ if( motorpos.uint8_position % 2 != 0) // if motorposition is odd incrementation 
 {
 	if (sinceLastRun + sinceLastRun >= sinceLastComm) // half the time of last commutation
 	{
-		motorpos.uint8_position = motorpos.uint8_position + 1; // WRITE WITH INCREMENTATION INSTEAD!
+		motorpos.uint8_position = ++motorpos.uint8_position; // Increment
 	}
 }
 
 /*Scheme*/
 
-if(motorpos.uint8_scheme == 2  && commutationTime <= SchemeValue1) // Change to slow-scheme due to velocity
+if(motorpos.uint8_scheme == 2  && commutationTime <= schemeValue1) // Change to slow-scheme due to velocity
 {
 	motorpos.uint8_scheme = 1;
 }
-if(commutationTime >= SchemeValue2) // Change to fast-scheme due to velocity /remember hysteresis
+if(commutationTime >= schemeValue2) // Change to fast-scheme due to velocity /remember hysteresis
 {
 	motorpos.uint8_scheme = 2;
 }
