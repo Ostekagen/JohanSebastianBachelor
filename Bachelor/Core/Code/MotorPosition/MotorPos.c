@@ -22,6 +22,11 @@ TIM_OC_InitTypeDef sConfigOC;
 uint8_t hal1 = 0;
 uint8_t hal2 = 0;
 uint8_t hal3 = 0;
+
+uint8_t hal1b = 0;
+uint8_t hal2b = 0;
+uint8_t hal3b = 0;
+
 uint8_t uint8_positionOld = 0;
 uint16_t commutationTime = 0; // OVERFLOW PROTECTION? Ikke nødvendigt for bruges kun i hurtig-mode?
 
@@ -47,7 +52,7 @@ hal1 = ADC_DMA_array[5];
 hal2 = ADC_DMA_array[6];
 hal3 = ADC_DMA_array[7];
 
-if(hal1 > 500)
+if(hal1b > 500)
 {
 	hal1 = 1;
 }
@@ -56,7 +61,7 @@ else
 	hal1 = 0;
 }
 
-if(hal2 > 500)
+if(hal2b > 500)
 {
 	hal2 = 1;
 }
@@ -65,7 +70,7 @@ else
 	hal2 = 0;
 }
 
-if(hal3 > 500)
+if(hal3b > 500)
 {
 	hal3 = 1;
 }
