@@ -48,9 +48,9 @@ struct ST_MOTORPOS pfx_MotorPos() // main function
 {
 
 /* til test*/
-hal1 = ADC_DMA_array[5];
-hal2 = ADC_DMA_array[6];
-hal3 = ADC_DMA_array[7];
+hal1b = ADC_DMA_array[5];
+hal2b = ADC_DMA_array[6];
+hal3b = ADC_DMA_array[7];
 
 if(hal1b > 500)
 {
