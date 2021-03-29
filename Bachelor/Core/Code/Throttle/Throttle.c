@@ -11,10 +11,10 @@
 #include <stdint.h>
 //#include "stm32f4xx_hal_tim.h"	// Laver fejl i drivers
 #include "main.h"
-#include "ADC_Measurements.h"
+#include "SystemMeasurements.h"
 
 /* External Variables */
-extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values
+extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values [6]
 
 
 /* Internal Variables */
@@ -27,7 +27,7 @@ uint8_t uint8_throttleOutput; //
 int pfx_Throttle() // Main function for commutation
 {
 	/* Collecting ADC value from throttle*/
-	int16_throttleInput = ADC_DMA_array[2];
+	int16_throttleInput = ADC_DMA_array[0]; // Getting Throttle input from DMA array
 	/* Calculating output value */
 	uint8_throttleOutput = (int16_throttleInput - int16_throttleOffset)/((int16_throttleMax - int16_throttleOffset)/(1000));
 	/* Returning output value between 0-1000 */

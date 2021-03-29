@@ -16,6 +16,7 @@
 #include "Throttle.h"
 #include "Error.h"
 #include "Brake.h"
+#include "SystemMeasurements.h"
 
 /* External Variables */
 extern struct ST_MOTORPOS motorpos; // initiating external struct
@@ -26,21 +27,14 @@ int8_t State = 0;
 /* Start Code here */
 void pfx_stateInterruptFunction()
 	{
+		pfx_getMeasurements();
 		pfx_MotorPos();
-
-		if (pfx_error() != 0)
-			{
-				State = 2;
-			}
-		if (pfx_brake() != 0)
-			{
-				State = 0;
-			}
 
 		switch(State)
 				{
 					case 0 : // Standby Mode
 					 	{
+					 		// PWM STOP
 					 		if (pfx_error() != 0)
 					 		 	{
 					 		 		State = 2;
@@ -74,6 +68,8 @@ void pfx_stateInterruptFunction()
 
 					case 2 : // Error Mode
 						{
+							// Sluk alle MOSFET
+							//PWM STOP
 							if (pfx_error() == 0)
 								{
 									State = 0;
