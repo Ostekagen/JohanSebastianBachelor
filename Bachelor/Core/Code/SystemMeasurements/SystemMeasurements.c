@@ -19,6 +19,7 @@ ADC_HandleTypeDef hadc3;
 /* Variables */
 struct ST_SYSMEAS{int16_t int16_batteryVol;int16_t int16_hallValue;int16_t motorVolValue;}systemmeasurements;	// Struct for returning measurements
 volatile uint32_t ADC_DMA_array[6]; 	// ADC DMA Triple regular simultaneous mode samples memory
+int16_t int16_hallOffset;
 
 /* Start Code Here */
 void pfx_setupMeasurement() // Start ADC
@@ -43,7 +44,7 @@ void pfx_setupMeasurement() // Start ADC
 
 }
 
-void pfx_getMeasurement() // Read ADC values and converts to voltage and current values in float
+struct ST_SYSMEAS pfx_getMeasurement() // Read ADC values and converts to voltage and current values in float
 {
 	systemmeasurements.int16_hallValue = ADC_DMA_array[1];		// TODO: find offset og træk det fra
 	systemmeasurements.motorVolValue = ADC_DMA_array[2];
