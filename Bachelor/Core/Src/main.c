@@ -675,7 +675,8 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
   /* Prevent unused argument(s) compilation warning */
   //timerInterruptFunction();
-	getMeasurement();
+	//getMeasurement();
+	pfx_stateInterruptFunction();
 }
 /* USER CODE END 4 */
 
