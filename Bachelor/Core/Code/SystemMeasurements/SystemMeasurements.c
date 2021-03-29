@@ -23,7 +23,7 @@ struct SYSMEAS{int16_t int16_batteryVol;int16_t int16_hallValue;int16_t motorVol
 volatile uint32_t ADC_DMA_array[6];
 
 /* Start ADC*/
-void setupMeasurement()
+void pfx_setupMeasurement()
 {
 	/* ADC in Triple regular simultaneous mode */
 	if (HAL_ADC_Start(&hadc2) != HAL_OK)
@@ -46,9 +46,8 @@ void setupMeasurement()
 }
 
 /* read ADC values and converts to voltage and current values in float */
-void getMeasurement()
+void pfx_getMeasurement()
 {
-
 	systemmeasurements.int16_hallValue = ADC_DMA_array[1];		// TODO: find offset og træk det fra
 	systemmeasurements.motorVolValue = ADC_DMA_array[2];
 	systemmeasurements.int16_batteryVol = ADC_DMA_array[3];
