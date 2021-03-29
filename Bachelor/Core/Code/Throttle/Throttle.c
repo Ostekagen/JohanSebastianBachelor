@@ -9,9 +9,9 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <SystemMeasurements.h>
 //#include "stm32f4xx_hal_tim.h"	// Laver fejl i drivers
 #include "main.h"
-#include "ADC_Measurements.h"
 
 /* External Variables */
 extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values
