@@ -27,7 +27,7 @@ int8_t State = 0;
 /* Start Code here */
 void pfx_stateInterruptFunction()
 	{
-		pfx_getMeasurements();
+		pfx_getMeasurement();
 		pfx_MotorPos();
 
 		switch(State)

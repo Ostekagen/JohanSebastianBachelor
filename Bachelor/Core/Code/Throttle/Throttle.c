@@ -9,17 +9,11 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdint.h>
-#include <SystemMeasurements.h>
-//#include "stm32f4xx_hal_tim.h"	// Laver fejl i drivers
 #include "main.h"
-<<<<<<< HEAD
 #include "SystemMeasurements.h"
-=======
->>>>>>> branch 'main' of https://github.com/Ostekagen/JohanSebastianBachelor.git
 
 /* External Variables */
 extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values [6]
-
 
 /* Internal Variables */
 int16_t int16_throttleInput; 	//
