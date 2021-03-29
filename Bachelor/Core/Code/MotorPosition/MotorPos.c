@@ -9,16 +9,20 @@
 /* includes */
 
 #include "main.h"
+#include "PWM.h"
 #include <stdio.h>
 #include <stdint.h>
-//#include "stm32f4xx_hal_tim.h"
+#include "stm32f4xx_hal_tim.h"
 
+TIM_HandleTypeDef htim6;
+TIM_OC_InitTypeDef sConfigOC;
 
  /*Define*/
 
 uint8_t Hal1 = 0;
 uint8_t Hal2 = 0;
 uint8_t Hal3 = 0;
+uint8_t uint8_positionOld = 0;
 uint16_t commutationTime = 0; // OVERFLOW PROTECTION? Ikke nødvendigt for bruges kun i hurtig-mode?
 
 uint16_t SchemeValue1 = 2500; // TBD
@@ -30,7 +34,7 @@ uint16_t timerValueOld = 0;
 uint16_t sinceLastRun = 0;
 uint16_t sinceLastComm = 0;
 
-struct ST_MOTORPOS{uint8_t uint8_position;uint8_t uint8_scheme;uint8_t uint8_positionOld;}motorpos={0, 0, 0};
+struct ST_MOTORPOS{uint8_t uint8_position;uint8_t uint8_scheme;}motorpos={0, 0};
 
 
 /*function*/
@@ -38,52 +42,51 @@ struct ST_MOTORPOS{uint8_t uint8_position;uint8_t uint8_scheme;uint8_t uint8_pos
 struct ST_MOTORPOS pfx_MotorPos() // main function
 {
 
-Hal1 = HAL_GPIO_ReadPin(GPIOB, H1_GPIO_Pin); // read value from gpio-pin
-Hal2 = HAL_GPIO_ReadPin(GPIOB, H2_GPIO_Pin);
-Hal3 = HAL_GPIO_ReadPin(GPIOB, H3_GPIO_Pin);
+Hal1 = HAL_GPIO_ReadPin(GPIOC, H1_GPIO_Pin); // read value from gpio-pin
+Hal2 = HAL_GPIO_ReadPin(GPIOC, H2_GPIO_Pin);
+Hal3 = HAL_GPIO_ReadPin(GPIOC, H3_GPIO_Pin);
 
 
-if(Hal1 == 1 && Hal2 == 1 && Hal3 == 1) // see truth table
+if(Hal1 == 1 && Hal2 == 1 && Hal3 == 1 && motorpos.uint8_position != 2 ) // see truth table
 	{
-	motorpos.uint8_positionOld = motorpos.uint8_position; // save old
+	uint8_positionOld = motorpos.uint8_position; // save old
 	motorpos.uint8_position = 1; // write new
 	}
-else if(Hal1 == 0 && Hal2 == 1 && Hal3 == 1)
+else if(Hal1 == 0 && Hal2 == 1 && Hal3 == 1 && motorpos.uint8_position != 4)
 	{
-	motorpos.uint8_positionOld = motorpos.uint8_position;
+	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 3;
 	}
-else if(Hal1 == 0 && Hal2 == 0 && Hal3 == 1)
+else if(Hal1 == 0 && Hal2 == 0 && Hal3 == 1 && motorpos.uint8_position != 6)
 	{
-	motorpos.uint8_positionOld = motorpos.uint8_position;
+	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 5;
 	}
-else if(Hal1 == 0 && Hal2 == 0 && Hal3 == 0)
+else if(Hal1 == 0 && Hal2 == 0 && Hal3 == 0 && motorpos.uint8_position != 8)
 	{
-	motorpos.uint8_positionOld = motorpos.uint8_position;
+	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 7;
 	}
-else if(Hal1 == 1 && Hal2 == 0 && Hal3 == 0)
+else if(Hal1 == 1 && Hal2 == 0 && Hal3 == 0 && motorpos.uint8_position != 10)
 	{
-	motorpos.uint8_positionOld = motorpos.uint8_position;
+	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 9;
 	}
-else if(Hal1 == 1 && Hal2 == 1 && Hal3 == 0)
+else if(Hal1 == 1 && Hal2 == 1 && Hal3 == 0 && motorpos.uint8_position != 12)
 	{
-	motorpos.uint8_positionOld = motorpos.uint8_position;
+	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 11;
 	}
 else
 	{
-	TIM1->CCR1 = 5000;					// Duty cycle of zero to all three PWMs
-	TIM1->CCR2 = 5000;					//
-	TIM1->CCR3 = 5000;					//
+	pfx_PWM_Stop();				// Turn off all PWM by applying compare value larger than counter
 	}
 
 /*30 degrees commutation*/
 
 timerValueOld = timerValue; // save old
-timerValue = TIM6->CNT; // write new
+timerValue = __HAL_TIM_GetCounter(&htim6); //_HAL_TIM_GetCounter(&htim6); // save new TIM6->CNT;
+
 
 if(timerValue < timerValueOld) // in case of overflow
 {
@@ -95,7 +98,7 @@ else
 }
 
 
-if(motorpos.uint8_positionOld != motorpos.uint8_position) // If commutation happened since last
+if(uint8_positionOld != motorpos.uint8_position) // If commutation happened since last
 {
 	if(timerValue < timerValueOld) // in case of overflow
 	{

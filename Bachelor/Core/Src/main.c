@@ -135,6 +135,9 @@ int main(void)
   /* USER CODE BEGIN 2 */
   setupMeasurement();
   HAL_TIM_Base_Start_IT(&htim8);
+  HAL_TIM_Base_Start(&htim6);
+
+
 
   /* Start PWM Timer*/
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
