@@ -6,11 +6,10 @@
  *      Author: Kenneth Meier Jensen
  */
 
-#include <math.h>
+/* Includes */
 #include <math.h>
 #include <stdio.h>
 #include <stdint.h>
-//#include "stm32f4xx_hal_tim.h"	//Laver fejl i drivers
 #include "main.h"
 #include "MotorPos.h"
 #include "Throttle.h"
@@ -19,7 +18,7 @@
 #include "SystemMeasurements.h"
 
 /* External Variables */
-extern struct ST_MOTORPOS motorpos; // initiating external struct
+extern struct ST_MOTORPOS motorpos; // calling external struct
 
 /* Internal Variables */
 int8_t State = 0;
@@ -43,7 +42,7 @@ void pfx_stateInterruptFunction()
 					 			{
 					 				State = 0;
 					 			}
-					 		else if (pfx_Throttle() > 1200) // 1200 er en ca værdi for hvornår throttle er aktiveret. Den skal præciseres
+					 		else if (pfx_throttle() > 1200) // 1200 er en ca værdi for hvornår throttle er aktiveret. Den skal præciseres
 					 			{
 					 				State = 1;
 					 			}

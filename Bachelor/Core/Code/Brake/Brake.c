@@ -7,21 +7,16 @@
 
 /* Includes */
 #include <math.h>
-#include <math.h>
-#include "stdio.h"
+#include <stdio.h>
 #include <stdint.h>
-#include "BLDC.h"
-#include "Ramp.h"
-#include "MotorPos.h"
 #include "main.h"
 
 /* External Variables */
-int8_t int8_brakeOutput;
 
 /* Internal Variables */
+int8_t int8_brakeOutput;
 
 /* Start Code Here */
-
 int8_t pfx_brake() // Brake Check Function
 	{
 		if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12) != 0) 		// Read Brake Input GPIO PIN

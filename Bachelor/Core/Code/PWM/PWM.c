@@ -5,9 +5,9 @@
  *      Author: Kenneth Meier Jensen
  */
 
+#include <math.h>
 #include <stdio.h>
 #include <stdint.h>
-#include <math.h>
 #include "main.h"
 #include "stm32f4xx_hal_tim.h"
 

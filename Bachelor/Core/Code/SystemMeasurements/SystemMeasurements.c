@@ -5,25 +5,23 @@
  *      Author: Rasmus Bank Mikkelsen
  */
 
+/* Includes */
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
-
-
 ADC_HandleTypeDef hadc1;
 ADC_HandleTypeDef hadc2;
 ADC_HandleTypeDef hadc3;
 
-/* data arrays position*/
+/* External Variables */
 
-struct SYSMEAS{int16_t int16_batteryVol;int16_t int16_hallValue;int16_t motorVolValue;}systemmeasurements;
+/* Variables */
+struct ST_SYSMEAS{int16_t int16_batteryVol;int16_t int16_hallValue;int16_t motorVolValue;}systemmeasurements;	// Struct for returning measurements
+volatile uint32_t ADC_DMA_array[6]; 	// ADC DMA Triple regular simultaneous mode samples memory
 
-/* ADC DMA Triple regular simultaneous mode samples memory*/
-volatile uint32_t ADC_DMA_array[6];
-
-/* Start ADC*/
-void pfx_setupMeasurement()
+/* Start Code Here */
+void pfx_setupMeasurement() // Start ADC
 {
 	/* ADC in Triple regular simultaneous mode */
 	if (HAL_ADC_Start(&hadc2) != HAL_OK)
@@ -45,8 +43,7 @@ void pfx_setupMeasurement()
 
 }
 
-/* read ADC values and converts to voltage and current values in float */
-void pfx_getMeasurement()
+void pfx_getMeasurement() // Read ADC values and converts to voltage and current values in float
 {
 	systemmeasurements.int16_hallValue = ADC_DMA_array[1];		// TODO: find offset og træk det fra
 	systemmeasurements.motorVolValue = ADC_DMA_array[2];

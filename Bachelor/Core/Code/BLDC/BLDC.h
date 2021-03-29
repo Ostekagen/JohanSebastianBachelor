@@ -10,5 +10,4 @@
 
 void pfx_BLDC();
 
-
 #endif /* CODE_BLDC_BLDC_H_ */

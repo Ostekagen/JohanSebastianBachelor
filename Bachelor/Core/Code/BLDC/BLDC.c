@@ -7,14 +7,12 @@
 
 /* Includes */
 #include <math.h>
-#include <math.h>
-#include "stdio.h"
+#include <stdio.h>
 #include <stdint.h>
+#include "main.h"
 #include "PWM.h"
 #include "Ramp.h"
 #include "MotorPos.h"
-#include "main.h"
-
 
 /* External Variables */
 extern struct ST_MOTORPOS motorpos; // initiating external struct

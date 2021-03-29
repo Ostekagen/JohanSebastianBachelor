@@ -6,8 +6,7 @@
  *
  */
 
-/* includes */
-
+/* Includes */
 #include "main.h"
 #include "PWM.h"
 #include <stdio.h>
@@ -17,7 +16,11 @@
 TIM_HandleTypeDef htim6;
 TIM_OC_InitTypeDef sConfigOC;
 
- /*Define*/
+ /* External Variables */
+extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values //midlertidig til test
+
+/* Variables */
+struct ST_MOTORPOS{uint8_t uint8_position;uint8_t uint8_scheme;}motorpos={0, 0};
 
 uint8_t hal1 = 0;
 uint8_t hal2 = 0;
@@ -39,11 +42,7 @@ uint16_t timerValueOld = 0;
 uint16_t sinceLastRun = 0;
 uint16_t sinceLastComm = 0;
 
-struct ST_MOTORPOS{uint8_t uint8_position;uint8_t uint8_scheme;}motorpos={0, 0};
-extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values //midlertidig til test
-
-/*function*/
-
+/* Start Code Here */
 struct ST_MOTORPOS pfx_MotorPos() // main function
 {
 

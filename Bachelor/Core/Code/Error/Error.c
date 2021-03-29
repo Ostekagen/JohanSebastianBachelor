@@ -14,15 +14,15 @@
 
 
 /* External Variables */
-extern struct SYSMEAS systemmeasurements;
-extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values
+extern struct ST_SYSMEAS systemmeasurements; // Calling systemmeasurement struct for use of values
+extern volatile uint32_t ADC_DMA_array[]; // Calling DMA array for reading of ADC values
 
 /* Internal Variables */
 uint8_t uint8_errorStatus;
 uint16_t uint16_throttleSignal;
 int16_t int16_systemCurrent;
-/* Start Code Here */
 
+/* Start Code Here */
 uint8_t pfx_error()
 	{
 		uint16_throttleSignal = ADC_DMA_array[0]; 	// Getting throttle signal

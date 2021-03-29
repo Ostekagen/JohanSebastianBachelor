@@ -12,5 +12,5 @@ extern int arrayPos;
 
 void pfx_getMeasurement();
 void pfx_setupMeasurement();
-struct SYSMEAS{int16_t int16_batteryVol;int16_t int16_hallValue;int16_t motorVolValue;}systemmeasurements;
+struct ST_SYSMEAS{int16_t int16_batteryVol;int16_t int16_hallValue;int16_t motorVolValue;}systemmeasurements;
 #endif /* ADC_MEASUREMENTS_H_ */
