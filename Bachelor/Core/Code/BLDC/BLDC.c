@@ -15,11 +15,12 @@
 #include "MotorPos.h"
 #include "main.h"
 
+
 /* External Variables */
 extern struct ST_MOTORPOS motorpos; // initiating external struct
 
 /* Internal Variables */
-float f_dutyCap; // Setting internal variable for dute cycle
+float f_dutyCap; // Setting internal variable for duty cycle
 
 /* Start Code Here */
 void pfx_BLDC() // Main function for commutation
@@ -139,10 +140,10 @@ void pfx_BLDC() // Main function for commutation
 					break;
 
 					default :
-					{
+						{
 						TIM1->CCER &= 0xFAAA; 		// Turn off Q1 & Q4 & Q3 & Q6 & Q5 & Q2
 						pfx_PWM_Stop();				// Turn off all PWM by applying compare value larger than counter
-					}
+						}
 
 				}
 		}
