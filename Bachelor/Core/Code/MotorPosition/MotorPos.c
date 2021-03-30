@@ -40,53 +40,17 @@ uint16_t sinceLastRun = 0;
 uint16_t sinceLastComm = 0;
 
 struct ST_MOTORPOS{uint8_t uint8_position;uint8_t uint8_scheme;}motorpos={0, 0};
-extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values //midlertidig til test
 
 /*function*/
 
 struct ST_MOTORPOS pfx_MotorPos() // main function
 {
 
-/* til test*/
-hal1b = ADC_DMA_array[5];
-hal2b = ADC_DMA_array[6];
-hal3b = ADC_DMA_array[7];
-
-if(hal1b > 500)
-{
-	hal1 = 1;
-}
-else
-{
-	hal1 = 0;
-}
-
-if(hal2b > 500)
-{
-	hal2 = 1;
-}
-else
-{
-	hal2 = 0;
-}
-
-if(hal3b > 500)
-{
-	hal3 = 1;
-}
-else
-{
-	hal3 = 0;
-}
-
-/* test kode slut
 
 hal1 = HAL_GPIO_ReadPin(GPIOC, H1_GPIO_Pin); // read value from gpio-pin (5v tolerant)
 hal2 = HAL_GPIO_ReadPin(GPIOC, H2_GPIO_Pin);
 hal3 = HAL_GPIO_ReadPin(GPIOC, H3_GPIO_Pin);
 
- test kode slut
- */
 
 
 if(hal1 == 1 && hal2 == 1 && hal3 == 1 && motorpos.uint8_position != 2 ) // see truth table
