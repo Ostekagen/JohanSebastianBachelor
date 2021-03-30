@@ -49,7 +49,7 @@ float pfx_ramp(uint8_t uint8_scheme)
 
 */
 
-		uint8_throttleOutput = pfx_Throttle();
+		uint8_throttleOutput = pfx_throttle();
 		if(uint8_scheme == 1)
 		{
 			if ((f_lastOutput == 0) && (uint8_throttleOutput > 0))
