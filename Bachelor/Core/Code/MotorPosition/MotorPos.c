@@ -42,14 +42,9 @@ uint16_t timerValueOld = 0;
 uint16_t sinceLastRun = 0;
 uint16_t sinceLastComm = 0;
 
-<<<<<<< HEAD
-struct ST_MOTORPOS{uint8_t uint8_position;uint8_t uint8_scheme;}motorpos={0, 0};
 
-/*function*/
-
-=======
 /* Start Code Here */
->>>>>>> branch 'main' of https://github.com/Ostekagen/JohanSebastianBachelor.git
+
 struct ST_MOTORPOS pfx_MotorPos() // main function
 {
 
