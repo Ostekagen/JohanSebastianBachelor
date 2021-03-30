@@ -22,7 +22,7 @@ int16_t int16_throttleMax= 2485; 	//
 uint8_t uint8_throttleOutput; //
 
 /* Start Code here */
-int pfx_Throttle() // Main function for commutation
+int pfx_throttle() // Main function for commutation
 {
 	/* Collecting ADC value from throttle*/
 	int16_throttleInput = ADC_DMA_array[0]; // Getting Throttle input from DMA array
