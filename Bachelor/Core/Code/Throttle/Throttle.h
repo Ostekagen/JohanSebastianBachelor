@@ -8,6 +8,6 @@
 #ifndef CODE_THROTTLE_THROTTLE_H_
 #define CODE_THROTTLE_THROTTLE_H_
 
-int pfx_Throttle();
+int pfx_throttle();
 
 #endif /* CODE_THROTTLE_THROTTLE_H_ */

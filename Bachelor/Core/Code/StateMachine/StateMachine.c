@@ -7,16 +7,15 @@
  */
 
 #include <math.h>
-#include <math.h>
 #include <stdio.h>
 #include <stdint.h>
-//#include "stm32f4xx_hal_tim.h"	//Laver fejl i drivers
 #include "main.h"
 #include "MotorPos.h"
 #include "Throttle.h"
 #include "Error.h"
 #include "Brake.h"
 #include "SystemMeasurements.h"
+#include "BLDC.h"
 
 /* External Variables */
 extern struct ST_MOTORPOS motorpos; // initiating external struct
