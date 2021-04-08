@@ -66,12 +66,6 @@ void Error_Handler(void);
 #define ADC1_Battery_Voltage_GPIO_Port GPIOA
 #define ADC3_MDC_Voltage_Pin GPIO_PIN_1
 #define ADC3_MDC_Voltage_GPIO_Port GPIOA
-#define ADC1_H1_Pin GPIO_PIN_2
-#define ADC1_H1_GPIO_Port GPIOA
-#define ADC3_H3_Pin GPIO_PIN_3
-#define ADC3_H3_GPIO_Port GPIOA
-#define ADC2_H2_Pin GPIO_PIN_4
-#define ADC2_H2_GPIO_Port GPIOC
 #define ADC2_System_Current_Pin GPIO_PIN_5
 #define ADC2_System_Current_GPIO_Port GPIOC
 #define H1_GPIO_Pin GPIO_PIN_10

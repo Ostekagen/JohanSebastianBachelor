@@ -106,17 +106,16 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     /**ADC1 GPIO Configuration
     PC0     ------> ADC1_IN10
     PA0-WKUP     ------> ADC1_IN0
-    PA2     ------> ADC1_IN2
     */
     GPIO_InitStruct.Pin = ADC1_Throttle_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(ADC1_Throttle_GPIO_Port, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = ADC1_Battery_Voltage_Pin|ADC1_H1_Pin;
+    GPIO_InitStruct.Pin = ADC1_Battery_Voltage_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+    HAL_GPIO_Init(ADC1_Battery_Voltage_GPIO_Port, &GPIO_InitStruct);
 
     /* ADC1 DMA Init */
     /* ADC1 Init */
@@ -154,13 +153,12 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
 
     __HAL_RCC_GPIOC_CLK_ENABLE();
     /**ADC2 GPIO Configuration
-    PC4     ------> ADC2_IN14
     PC5     ------> ADC2_IN15
     */
-    GPIO_InitStruct.Pin = ADC2_H2_Pin|ADC2_System_Current_Pin;
+    GPIO_InitStruct.Pin = ADC2_System_Current_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+    HAL_GPIO_Init(ADC2_System_Current_GPIO_Port, &GPIO_InitStruct);
 
     /* ADC2 DMA Init */
     /* ADC2 Init */
@@ -199,12 +197,11 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     __HAL_RCC_GPIOA_CLK_ENABLE();
     /**ADC3 GPIO Configuration
     PA1     ------> ADC3_IN1
-    PA3     ------> ADC3_IN3
     */
-    GPIO_InitStruct.Pin = ADC3_MDC_Voltage_Pin|ADC3_H3_Pin;
+    GPIO_InitStruct.Pin = ADC3_MDC_Voltage_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+    HAL_GPIO_Init(ADC3_MDC_Voltage_GPIO_Port, &GPIO_InitStruct);
 
     /* ADC3 DMA Init */
     /* ADC3 Init */
@@ -254,11 +251,10 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
     /**ADC1 GPIO Configuration
     PC0     ------> ADC1_IN10
     PA0-WKUP     ------> ADC1_IN0
-    PA2     ------> ADC1_IN2
     */
     HAL_GPIO_DeInit(ADC1_Throttle_GPIO_Port, ADC1_Throttle_Pin);
 
-    HAL_GPIO_DeInit(GPIOA, ADC1_Battery_Voltage_Pin|ADC1_H1_Pin);
+    HAL_GPIO_DeInit(ADC1_Battery_Voltage_GPIO_Port, ADC1_Battery_Voltage_Pin);
 
     /* ADC1 DMA DeInit */
     HAL_DMA_DeInit(hadc->DMA_Handle);
@@ -285,10 +281,9 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
     __HAL_RCC_ADC2_CLK_DISABLE();
 
     /**ADC2 GPIO Configuration
-    PC4     ------> ADC2_IN14
     PC5     ------> ADC2_IN15
     */
-    HAL_GPIO_DeInit(GPIOC, ADC2_H2_Pin|ADC2_System_Current_Pin);
+    HAL_GPIO_DeInit(ADC2_System_Current_GPIO_Port, ADC2_System_Current_Pin);
 
     /* ADC2 DMA DeInit */
     HAL_DMA_DeInit(hadc->DMA_Handle);
@@ -316,9 +311,8 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
 
     /**ADC3 GPIO Configuration
     PA1     ------> ADC3_IN1
-    PA3     ------> ADC3_IN3
     */
-    HAL_GPIO_DeInit(GPIOA, ADC3_MDC_Voltage_Pin|ADC3_H3_Pin);
+    HAL_GPIO_DeInit(ADC3_MDC_Voltage_GPIO_Port, ADC3_MDC_Voltage_Pin);
 
     /* ADC3 DMA DeInit */
     HAL_DMA_DeInit(hadc->DMA_Handle);
