@@ -22,49 +22,36 @@ uint8_t int16_throttleCalc;
 
 /* Internal Variables */
 int counter;
-float f_lastOutput = 0.1;
+float f_lastOutput;
 float f_gain1 = 1.00033f;
 float f_gain2 = 1.001;
 
 /* Start Code Here */
 
+// The Ramp function will receive the shecme as input. It will then use the output from throttle to calculate a ramp function
 float pfx_ramp(uint8_t uint8_scheme)
 	{
-		/*uint8_throttleOutput = pfx_Throttle();
-		if(uint8_scheme == 1 && pfx_Throttle() != 0)
-			{
-				if(counter == 0)
-					{
-						f_dutycap = (uint8_throttleOutput * f_gain1)/100.0;
-						counter++;
-					}
-				if(counter > 0)
-					{
 
-					}
-				uint8_throttleOutput
-				//f_lastOutput;
-			}
+		int16_throttleCalc = pfx_throttle();	// Calling Throttle function
 
-
-*/
-
-		int16_throttleCalc = pfx_throttle();
+		// Scheme 1
 		if(uint8_scheme == 1)
 		{
-			if ((f_lastOutput == 0) && (int16_throttleCalc > 0))
+			if ((f_lastOutput == 0) && (int16_throttleCalc > 0))	// To ensure the throttle output only is zero when the throttle is not pulled
 			{
 				f_lastOutput = 0.1;
 			}
-			if (f_lastOutput < int16_throttleCalc)
+			if (f_lastOutput < int16_throttleCalc)	// When throttle output is higher than our last output, increase our output
 			{
 				f_lastOutput = f_lastOutput*f_gain1;
 			}
-			else if (f_lastOutput >= int16_throttleCalc)
+			else if (f_lastOutput >= int16_throttleCalc)	// When last output is less or equal to the throttle output, set output to throttle output
 			{
 				f_lastOutput = int16_throttleCalc;
 			}
 		}
+
+		// Scheme 2
 		else if (uint8_scheme == 2)
 		{
 			if (f_lastOutput < int16_throttleCalc)
@@ -77,7 +64,7 @@ float pfx_ramp(uint8_t uint8_scheme)
 			}
 		}
 
-		f_dutyCap = f_lastOutput/1000;
+		f_dutyCap = f_lastOutput/1000;	// set our output to a value between 0 and 1
 
 		return f_dutyCap;
 	}
