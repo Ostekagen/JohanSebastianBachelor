@@ -5,7 +5,7 @@
  *      Author: Kenneth Meier Jensen
  */
 
-#include <math.h>
+/* Includes */
 #include <math.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -16,31 +16,33 @@
 extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values [6]
 
 /* Internal Variables */
-int16_t int16_throttleInput; 	//
-int16_t int16_throttleOffset = 1100; 	//
-int16_t int16_throttleMax= 2485; 	//
-uint8_t uint8_throttleOutput; //
+int16_t int16_throttleInput; 			// Throttle input variable
+int16_t int16_throttleOffset = 1100; 	// Throttle offset variable
+int16_t int16_throttleMax= 2485; 		// Throttle max variable
+int16_t int16_throttleCalc; 			// Throttle output variable
+int16_t int16_throttleOutput; 			// Throttle output variable
 
 /* Start Code here */
-int pfx_throttle() // Main function for commutation
+int16_t pfx_throttle() // Main function for commutation
 {
 	/* Collecting ADC value from throttle*/
 	int16_throttleInput = ADC_DMA_array[0]; // Getting Throttle input from DMA array
 	/* Calculating output value */
-	uint8_throttleOutput = (int16_throttleInput - int16_throttleOffset)/((int16_throttleMax - int16_throttleOffset)/(1000));
+	int16_throttleCalc = (int16_throttleInput - int16_throttleOffset)/((int16_throttleMax - int16_throttleOffset)/(1000)); // Calculating a throttle value
 	/* Returning output value between 0-1000 */
-	if (uint8_throttleOutput > 1000)
+	if (int16_throttleCalc > 1000)	// Limiting the output value to 1000
 		{
-			uint8_throttleOutput = 1000;
-			return uint8_throttleOutput;
+			int16_throttleOutput = 1000;
+			return int16_throttleOutput;	// Returning output value
 		}
-	else if (uint8_throttleOutput < 0)
+	else if (int16_throttleCalc < 0)	// Limiting the output value to 0
 		{
-			uint8_throttleOutput = 0;
-			return uint8_throttleOutput;
+			int16_throttleOutput = 0;
+			return int16_throttleOutput;	// Returning output value
 		}
-	else
+	else								// Returning if values is between 0-1000
 		{
-			return uint8_throttleOutput;
+			int16_throttleOutput = int16_throttleCalc;
+			return int16_throttleOutput;	// Returning output value
 		}
 }

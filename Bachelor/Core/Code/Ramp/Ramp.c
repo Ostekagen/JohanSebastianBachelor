@@ -18,7 +18,7 @@
 
 /* External Variables */
 float f_dutyCap;
-uint8_t uint8_throttleOutput;
+uint8_t int16_throttleCalc;
 
 /* Internal Variables */
 int counter;
@@ -49,31 +49,31 @@ float pfx_ramp(uint8_t uint8_scheme)
 
 */
 
-		uint8_throttleOutput = pfx_throttle();
+		int16_throttleCalc = pfx_throttle();
 		if(uint8_scheme == 1)
 		{
-			if ((f_lastOutput == 0) && (uint8_throttleOutput > 0))
+			if ((f_lastOutput == 0) && (int16_throttleCalc > 0))
 			{
 				f_lastOutput = 0.1;
 			}
-			if (f_lastOutput < uint8_throttleOutput)
+			if (f_lastOutput < int16_throttleCalc)
 			{
 				f_lastOutput = f_lastOutput*f_gain1;
 			}
-			else if (f_lastOutput >= uint8_throttleOutput)
+			else if (f_lastOutput >= int16_throttleCalc)
 			{
-				f_lastOutput = uint8_throttleOutput;
+				f_lastOutput = int16_throttleCalc;
 			}
 		}
 		else if (uint8_scheme == 2)
 		{
-			if (f_lastOutput < uint8_throttleOutput)
+			if (f_lastOutput < int16_throttleCalc)
 			{
 				f_lastOutput = f_lastOutput*f_gain2;	// Skal være anderledes end den anden
 			}
-			else if (f_lastOutput >= uint8_throttleOutput)
+			else if (f_lastOutput >= int16_throttleCalc)
 			{
-				f_lastOutput = uint8_throttleOutput;
+				f_lastOutput = int16_throttleCalc;
 			}
 		}
 
