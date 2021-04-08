@@ -19,7 +19,9 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#include "throttle.h"
+#include "SystemMeasurements.h"
+#include "StateMachine.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -70,6 +72,9 @@ static void MX_TIM6_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
+/* Test Variables Start */
+	int throttleTest;
+/* Test Variables End */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
@@ -153,6 +158,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 while (1)
   {
+	/* Throttle.c Test Start */
+		throttleTest = pfx_throttle();
+	/* Throttle.c Test End */
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
