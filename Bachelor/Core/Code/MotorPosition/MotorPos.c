@@ -17,7 +17,6 @@ TIM_HandleTypeDef htim6;
 TIM_OC_InitTypeDef sConfigOC;
 
  /* External Variables */
-extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values //midlertidig til test
 
 /* Variables */
 struct ST_MOTORPOS{uint8_t uint8_position;uint8_t uint8_scheme;}motorpos={0, 0};
@@ -26,9 +25,6 @@ uint8_t hal1 = 0;
 uint8_t hal2 = 0;
 uint8_t hal3 = 0;
 
-uint8_t hal1b = 0;
-uint8_t hal2b = 0;
-uint8_t hal3b = 0;
 
 uint8_t uint8_positionOld = 0;
 uint16_t commutationTime = 0; // OVERFLOW PROTECTION? Ikke nødvendigt for bruges kun i hurtig-mode?
@@ -53,7 +49,7 @@ hal1 = HAL_GPIO_ReadPin(GPIOC, H1_GPIO_Pin); // read value from gpio-pin (5v tol
 hal2 = HAL_GPIO_ReadPin(GPIOC, H2_GPIO_Pin);
 hal3 = HAL_GPIO_ReadPin(GPIOC, H3_GPIO_Pin);
 
-
+/*60 degrees commutation*/
 
 if(hal1 == 1 && hal2 == 1 && hal3 == 1 && motorpos.uint8_position != 2 ) // see truth table
 	{
@@ -127,7 +123,7 @@ if( motorpos.uint8_position % 2 != 0) // if motorposition is odd incrementation 
 	}
 }
 
-/*Scheme*/
+/*Scheme selector*/
 
 if(motorpos.uint8_scheme == 2  && commutationTime <= schemeValue1) // Change to slow-scheme due to velocity
 {
