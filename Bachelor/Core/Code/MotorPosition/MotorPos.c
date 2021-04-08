@@ -25,9 +25,8 @@ uint8_t hal1 = 0;
 uint8_t hal2 = 0;
 uint8_t hal3 = 0;
 
-
 uint8_t uint8_positionOld = 0;
-uint16_t commutationTime = 0; // OVERFLOW PROTECTION? Ikke nødvendigt for bruges kun i hurtig-mode?
+uint16_t commutationTime = 0; // OVERFLOW PROTECTION?
 
 uint16_t schemeValue1 = 2500; // TBD
 uint16_t schemeValue2 = 2000; // TBD
@@ -43,7 +42,6 @@ uint16_t sinceLastComm = 0;
 
 struct ST_MOTORPOS pfx_MotorPos() // main function
 {
-
 
 hal1 = HAL_GPIO_ReadPin(GPIOC, H1_GPIO_Pin); // read value from gpio-pin (5v tolerant)
 hal2 = HAL_GPIO_ReadPin(GPIOC, H2_GPIO_Pin);
