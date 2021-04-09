@@ -49,32 +49,32 @@ hal3 = HAL_GPIO_ReadPin(GPIOC, H3_GPIO_Pin);
 
 /*60 degrees commutation*/
 
-if(hal1 == 1 && hal2 == 1 && hal3 == 1 && motorpos.uint8_position != 2 ) // see truth table
+if(hal1 == 0 && hal2 == 0 && hal3 == 1 && motorpos.uint8_position != 2 ) // see truth table
 	{
 	uint8_positionOld = motorpos.uint8_position; // save old
 	motorpos.uint8_position = 1; // write new
 	}
-else if(hal1 == 0 && hal2 == 1 && hal3 == 1 && motorpos.uint8_position != 4)
+else if(hal1 == 1 && hal2 == 0 && hal3 == 1 && motorpos.uint8_position != 4)
 	{
 	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 3;
 	}
-else if(hal1 == 0 && hal2 == 0 && hal3 == 1 && motorpos.uint8_position != 6)
+else if(hal1 == 1 && hal2 == 0 && hal3 == 0 && motorpos.uint8_position != 6)
 	{
 	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 5;
 	}
-else if(hal1 == 0 && hal2 == 0 && hal3 == 0 && motorpos.uint8_position != 8)
+else if(hal1 == 1 && hal2 == 1 && hal3 == 0 && motorpos.uint8_position != 8)
 	{
 	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 7;
 	}
-else if(hal1 == 1 && hal2 == 0 && hal3 == 0 && motorpos.uint8_position != 10)
+else if(hal1 == 0 && hal2 == 1 && hal3 == 0 && motorpos.uint8_position != 10)
 	{
 	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 9;
 	}
-else if(hal1 == 1 && hal2 == 1 && hal3 == 0 && motorpos.uint8_position != 12)
+else if(hal1 == 0 && hal2 == 1 && hal3 == 1 && motorpos.uint8_position != 12)
 	{
 	uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 11;
