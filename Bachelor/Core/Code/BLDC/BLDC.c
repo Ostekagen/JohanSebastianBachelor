@@ -7,14 +7,15 @@
 
 /* Includes */
 #include <math.h>
-#include <math.h>
-#include "stdio.h"
+#include <stdio.h>
 #include <stdint.h>
 #include "PWM.h"
 #include "Ramp.h"
 #include "MotorPos.h"
 #include "main.h"
 
+TIM_HandleTypeDef htim1;
+TIM_OC_InitTypeDef sConfigOC;
 
 /* External Variables */
 extern struct ST_MOTORPOS motorpos; // initiating external struct

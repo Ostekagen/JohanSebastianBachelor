@@ -17,8 +17,8 @@ extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of
 
 /* Internal Variables */
 int16_t int16_throttleInput; 			// Throttle input variable
-int16_t int16_throttleOffset = 1175; 	// Throttle offset variable
-int16_t int16_throttleMax= 3400; 		// Throttle max variable
+int16_t int16_throttleOffset = 1050; 	// Throttle offset variable
+int16_t int16_throttleMax= 3180; 		// Throttle max variable
 int16_t int16_throttleCalc; 			// Throttle output variable
 int16_t int16_throttleOutput; 			// Throttle output variable
 

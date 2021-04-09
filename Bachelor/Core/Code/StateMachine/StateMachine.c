@@ -16,6 +16,10 @@
 #include "Brake.h"
 #include "SystemMeasurements.h"
 #include "BLDC.h"
+#include "PWM.h"
+
+TIM_HandleTypeDef htim1;
+TIM_OC_InitTypeDef sConfigOC;
 
 /* External Variables */
 extern struct ST_MOTORPOS motorpos; // initiating external struct
@@ -42,9 +46,13 @@ void pfx_stateInterruptFunction()
 					 			{
 					 				State = 0;
 					 			}
-					 		else if (pfx_throttle() > 1200) // 1200 er en ca værdi for hvornår throttle er aktiveret. Den skal præciseres
+					 		else if (pfx_throttle() > 100) // TODO: Find correct value
 					 			{
 					 				State = 1;
+					 			}
+					 		else
+					 			{
+
 					 			}
 					 	}
 
@@ -56,19 +64,22 @@ void pfx_stateInterruptFunction()
 					 		 	{
 					 		 		State = 2;
 					 		 	}
-							if (pfx_brake() !=0)
+							else if (pfx_brake() !=0)
 								{
 									State = 0;
 								}
-					 		pfx_BLDC();
+							else
+								{
+									pfx_BLDC();
+								}
 						}
 
 					break;
 
 					case 2 : // Error Mode
 						{
-							// Sluk alle MOSFET
-							//PWM STOP
+							TIM1->CCER &= 0xFAAA;	// Sluk alle MOSFET
+							pfx_PWM_Stop();			// Stop The PWM
 							if (pfx_error() == 0)
 								{
 									State = 0;

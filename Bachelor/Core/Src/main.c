@@ -21,6 +21,8 @@
 #include "main.h"
 #include "SystemMeasurements.h"
 #include "StateMachine.h"
+#include "Error.h"
+#include "Brake.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -76,8 +78,7 @@ static void MX_TIM6_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-int test;
-int ON;
+
 extern float BatteryVol; //From ADC_Measurements
 extern float MDCVol; //From ADC_Measurements
 extern float SysCur; //From ADC_Measurements
@@ -85,8 +86,22 @@ extern float H1; //From ADC_Measurements
 extern float H3; //From ADC_Measurements
 extern float H2; //From ADC_Measurements
 extern float Throttle;
-int c, d;
+
+/* Test Variables Start */
+/*int c, d;
 int PWMtest = 0;
+int test;
+int ON;*/
+int GPIO_H1_Test;
+int GPIO_H2_Test;
+int GPIO_H3_Test;
+int errorStatusTest;
+int brakeTest;
+int overcurrentTest;
+int throttleTest;
+extern struct SYSMEAS systemmeasurements;
+extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values
+/* Test Variables End */
 
 ADC_HandleTypeDef hadc1;
 ADC_HandleTypeDef hadc2;
@@ -102,8 +117,6 @@ DMA_HandleTypeDef hdma_adc1;
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	// Dette er en test, fra JP
-	// Vi tester stadig
 
 	MX_TIM1_Init();
   /* USER CODE END 1 */
@@ -155,9 +168,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 while (1)
   {
-	/* Throttle.c Test Start */
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);
-	/* Throttle.c Test End */
+	/* Error.c Test Start */
+		pfx_getMeasurement();
+		GPIO_H1_Test = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_10);
+		GPIO_H2_Test = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_11);
+		GPIO_H3_Test = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_12);
+		brakeTest = pfx_brake();
+		throttleTest = ADC_DMA_array[0];
+		overcurrentTest = ADC_DMA_array[1];
+		errorStatusTest = pfx_error();
+	/* Error.c Test End */
 
     /* USER CODE END WHILE */
 
@@ -673,7 +693,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
   /* Prevent unused argument(s) compilation warning */
   //timerInterruptFunction();
 	//getMeasurement();
-	pfx_stateInterruptFunction();
+	//pfx_stateInterruptFunction();
 }
 /* USER CODE END 4 */
 
