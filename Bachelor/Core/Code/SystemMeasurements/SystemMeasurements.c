@@ -17,7 +17,7 @@ ADC_HandleTypeDef hadc3;
 
 
 // Data Struct for system measurements
-struct SYSMEAS{int16_t int16_batteryVol;int16_t int16_hallValue;int16_t motorVolValue;}systemmeasurements;
+struct ST_SYSMEAS{int16_t int16_batteryVol;int16_t int16_hallValue;int16_t motorVolValue;}systemmeasurements;
 
 /* ADC DMA Triple regular simultaneous mode samples memory*/
 volatile uint32_t ADC_DMA_array[6];

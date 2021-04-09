@@ -13,7 +13,7 @@
 #include "SystemMeasurements.h"
 
 /* External Variables */
-extern struct SYSMEAS systemmeasurements;	// Calling the measurements struct
+extern struct ST_SYSMEAS systemmeasurements;	// Calling the measurements struct
 extern volatile uint32_t ADC_DMA_array[]; 	// Calling DMA array for reading ADC values
 
 /* Internal Variables */

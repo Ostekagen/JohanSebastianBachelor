@@ -98,7 +98,7 @@ int errorStatusTest;
 int brakeTest;
 int overcurrentTest;
 int throttleTest;
-extern struct SYSMEAS systemmeasurements;
+extern struct ST_SYSMEAS systemmeasurements;
 extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values
 /* Test Variables End */
 
