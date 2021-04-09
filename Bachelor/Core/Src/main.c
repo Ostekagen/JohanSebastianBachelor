@@ -168,14 +168,7 @@ int main(void)
 while (1)
   {
 	/* Error.c Test Start */
-		pfx_getMeasurement();
-		GPIO_H1_Test = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_10);
-		GPIO_H2_Test = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_11);
-		GPIO_H3_Test = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_12);
-		brakeTest = pfx_brake();
-		throttleTest = ADC_DMA_array[0];
-		overcurrentTest = ADC_DMA_array[1];
-		errorStatusTest = pfx_error();
+
 	/* Error.c Test End */
 
     /* USER CODE END WHILE */
@@ -702,7 +695,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
   /* Prevent unused argument(s) compilation warning */
   //timerInterruptFunction();
 	//getMeasurement();
-	//pfx_stateInterruptFunction();
+	pfx_stateInterruptFunction();
 }
 /* USER CODE END 4 */
 
