@@ -43,9 +43,9 @@ uint16_t sinceLastComm = 0;
 struct ST_MOTORPOS pfx_MotorPos() // main function
 {
 
-hal1 = HAL_GPIO_ReadPin(GPIOC, H1_GPIO_Pin); // read value from gpio-pin (5v tolerant)
-hal2 = HAL_GPIO_ReadPin(GPIOC, H2_GPIO_Pin);
-hal3 = HAL_GPIO_ReadPin(GPIOC, H3_GPIO_Pin);
+hal1 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_10); // read value from gpio-pin (5v tolerant)
+hal2 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_11);
+hal3 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_12);
 
 /*60 degrees commutation*/
 
