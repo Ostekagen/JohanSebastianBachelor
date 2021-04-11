@@ -18,7 +18,7 @@
 
 /* External Variables */
 float f_dutyCap;
-uint8_t int16_throttleCalc;
+uint16_t int16_throttleCalc;
 
 /* Internal Variables */
 int counter;

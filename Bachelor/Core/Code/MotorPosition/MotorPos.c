@@ -19,14 +19,13 @@ TIM_OC_InitTypeDef sConfigOC;
  /* External Variables */
 
 /* Variables */
-struct ST_MOTORPOS{uint8_t uint8_position;uint8_t uint8_scheme;}motorpos={0, 0};
+struct ST_MOTORPOS{uint8_t uint8_position;uint8_t uint8_scheme;}motorpos={0, 1};
 
 uint8_t hal1 = 0;
 uint8_t hal2 = 0;
 uint8_t hal3 = 0;
 
 uint8_t uint8_positionOld = 0;
-uint16_t commutationTime = 0; // OVERFLOW PROTECTION?
 
 uint16_t schemeValue1 = 2500; // TBD
 uint16_t schemeValue2 = 2000; // TBD
@@ -48,35 +47,36 @@ hal2 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_11);
 hal3 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_12);
 
 /*60 degrees commutation*/
+uint8_positionOld = motorpos.uint8_position; // save old
 
 if(hal1 == 0 && hal2 == 0 && hal3 == 1 && motorpos.uint8_position != 2 ) // see truth table
 	{
-	uint8_positionOld = motorpos.uint8_position; // save old
+	//uint8_positionOld = motorpos.uint8_position; // save old
 	motorpos.uint8_position = 1; // write new
 	}
 else if(hal1 == 1 && hal2 == 0 && hal3 == 1 && motorpos.uint8_position != 4)
 	{
-	uint8_positionOld = motorpos.uint8_position;
+	//uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 3;
 	}
 else if(hal1 == 1 && hal2 == 0 && hal3 == 0 && motorpos.uint8_position != 6)
 	{
-	uint8_positionOld = motorpos.uint8_position;
+	//uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 5;
 	}
 else if(hal1 == 1 && hal2 == 1 && hal3 == 0 && motorpos.uint8_position != 8)
 	{
-	uint8_positionOld = motorpos.uint8_position;
+	//uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 7;
 	}
 else if(hal1 == 0 && hal2 == 1 && hal3 == 0 && motorpos.uint8_position != 10)
 	{
-	uint8_positionOld = motorpos.uint8_position;
+	//uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 9;
 	}
 else if(hal1 == 0 && hal2 == 1 && hal3 == 1 && motorpos.uint8_position != 12)
 	{
-	uint8_positionOld = motorpos.uint8_position;
+	//uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 11;
 	}
 else
@@ -102,32 +102,25 @@ else
 
 if(uint8_positionOld != motorpos.uint8_position) // If commutation happened since last
 {
-	if(timerValue < timerValueOld) // in case of overflow
-	{
-	sinceLastComm = maxValue - timerValueOld  + timerValue;
-	}
-	else
-	{
-	sinceLastComm =  timerValue - timerValueOld;
-	}
-	sinceLastRun = 0; // reset
+	sinceLastComm = sinceLastRun;
+	sinceLastRun = 0;
 }
 
 if( motorpos.uint8_position % 2 != 0) // if motorposition is odd incrementation is allowed
 {
 	if (sinceLastRun + sinceLastRun >= sinceLastComm) // half the time of last commutation
 	{
-		motorpos.uint8_position = ++motorpos.uint8_position; // Increment
+		motorpos.uint8_position = motorpos.uint8_position + 1; // Increment
 	}
 }
 
 /*Scheme selector*/
 
-if(motorpos.uint8_scheme == 2  && commutationTime <= schemeValue1) // Change to slow-scheme due to velocity
+if(motorpos.uint8_scheme == 2  && sinceLastComm <= schemeValue1) // Change to slow-scheme due to velocity
 {
 	motorpos.uint8_scheme = 1;
 }
-if(commutationTime >= schemeValue2) // Change to fast-scheme due to velocity /remember hysteresis
+if(sinceLastComm >= schemeValue2) // Change to fast-scheme due to velocity /remember hysteresis
 {
 	motorpos.uint8_scheme = 2;
 }
