@@ -23,7 +23,7 @@ struct ST_MOTORPOS{uint8_t uint8_position;uint8_t uint8_scheme;}motorpos={0, 1};
 
 uint8_t uint8_hallBLDC1 = 0;
 uint8_t uint8_hallBLDC2 = 0;
-uint8_t hal3 = 0;
+uint8_t uint8_hallBLDC3 = 0;
 
 uint8_t uint8_positionOld = 0;
 
@@ -44,39 +44,33 @@ struct ST_MOTORPOS pfx_MotorPos() // main function
 
 uint8_hallBLDC1 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_10); // read value from gpio-pin (5v tolerant)
 uint8_hallBLDC2 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_11);
-hal3 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_12);
+uint8_hallBLDC3 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_12);
 
 /*60 degrees commutation*/
 uint8_positionOld = motorpos.uint8_position; // save old
 
-if(uint8_hallBLDC1 == 0 && uint8_hallBLDC2 == 0 && hal3 == 1 && motorpos.uint8_position != 2 ) // see truth table
+if(uint8_hallBLDC1 == 0 && uint8_hallBLDC2 == 0 && uint8_hallBLDC3 == 1 && motorpos.uint8_position != 2 ) // see truth table
 	{
-	//uint8_positionOld = motorpos.uint8_position; // save old
 	motorpos.uint8_position = 1; // write new
 	}
-else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 0 && hal3 == 1 && motorpos.uint8_position != 4)
+else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 0 && uint8_hallBLDC3 == 1 && motorpos.uint8_position != 4)
 	{
-	//uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 3;
 	}
-else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 0 && hal3 == 0 && motorpos.uint8_position != 6)
+else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 0 && uint8_hallBLDC3 == 0 && motorpos.uint8_position != 6)
 	{
-	//uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 5;
 	}
-else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 1 && hal3 == 0 && motorpos.uint8_position != 8)
+else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 1 && uint8_hallBLDC3 == 0 && motorpos.uint8_position != 8)
 	{
-	//uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 7;
 	}
-else if(uint8_hallBLDC1 == 0 && uint8_hallBLDC2 == 1 && hal3 == 0 && motorpos.uint8_position != 10)
+else if(uint8_hallBLDC1 == 0 && uint8_hallBLDC2 == 1 && uint8_hallBLDC3 == 0 && motorpos.uint8_position != 10)
 	{
-	//uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 9;
 	}
-else if(uint8_hallBLDC1 == 0 && uint8_hallBLDC2 == 1 && hal3 == 1 && motorpos.uint8_position != 12)
+else if(uint8_hallBLDC1 == 0 && uint8_hallBLDC2 == 1 && uint8_hallBLDC3 == 1 && motorpos.uint8_position != 12)
 	{
-	//uint8_positionOld = motorpos.uint8_position;
 	motorpos.uint8_position = 11;
 	}
 else
