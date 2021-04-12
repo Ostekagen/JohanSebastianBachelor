@@ -10,7 +10,8 @@
 #include <stdio.h>
 #include <stdint.h>
 #include "main.h"
-
+int iAlive;
+int PinInput;
 /* External Variables */
 
 /* Internal Variables */
@@ -19,6 +20,8 @@ int8_t int8_brakeOutput;
 /* Start Code Here */
 int8_t pfx_brake() // Brake Check Function
 	{
+		iAlive = iAlive +1;
+		PinInput = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
 		if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12) != 0) 		// Read Brake Input GPIO PIN
 			{
 				int8_brakeOutput = 1;						// Brake Activated
