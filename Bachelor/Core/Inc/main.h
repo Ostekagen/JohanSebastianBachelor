@@ -60,8 +60,6 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define ADC1_Battery_Voltage_Pin GPIO_PIN_0
-#define ADC1_Battery_Voltage_GPIO_Port GPIOA
 #define ADC3_MDC_Voltage_Pin GPIO_PIN_1
 #define ADC3_MDC_Voltage_GPIO_Port GPIOA
 #define ADC2_System_Current_Pin GPIO_PIN_5
