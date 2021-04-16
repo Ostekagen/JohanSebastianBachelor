@@ -87,11 +87,11 @@ timerValue = __HAL_TIM_GetCounter(&htim6);  // save new timer value
 
 if(timerValue < timerValueOld) // in case of overflow
 {
-	sinceLastRun += maxValue - timerValueOld + timerValue;
+	sinceLastRun += ((maxValue - timerValueOld + timerValue)/15000);
 }
 else
 {
-	sinceLastRun +=  timerValue - timerValueOld; // Count ups until saved in sinceLastComm
+	sinceLastRun +=  ((timerValue - timerValueOld)/15000); // Count ups until saved in sinceLastComm
 }
 
 
