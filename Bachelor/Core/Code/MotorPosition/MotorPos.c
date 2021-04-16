@@ -111,6 +111,7 @@ else
 	/*do nothing*/
 }
 
+// return struct with position and scheme
 return motorpos;
 }
 
