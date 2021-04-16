@@ -36,7 +36,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFAEB; 	// Turn off Q4 & Q3 & Q5 & Q2
 					 		TIM1->CCER |= 0x41;		// Turn on Q1 & Q6
-					 		pfx_PWM(0, 1);			// CH1 - Q1 - Full On
+					 		pfx_PWM(1, 1);			// CH1 - Q1 - Full On
 					 		pfx_PWM(f_dutyCap, 2);	// CH2N - Q6 - PWM
 					 	}
 					break;
@@ -45,7 +45,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFAEB; 	// Turn off Q4 & Q3 & Q5 & Q2
 					 		TIM1->CCER |= 0x41;		// Turn on Q1 & Q6
-					 		pfx_PWM(0, 1);			// CH1 - Q1 - Full On
+					 		pfx_PWM(1, 1);			// CH1 - Q1 - Full On
 					 		pfx_PWM(f_dutyCap, 2);	// CH2N - Q6 - PWM
 					 	}
 					break;
@@ -55,7 +55,7 @@ void pfx_BLDC() // Main function for commutation
 					 		TIM1->CCER &= 0xFEAB; 	// Turn off Q4 & Q3 & Q6 & Q5
 					 		TIM1->CCER |= 0x401;	// Turn on Q1 & Q2
 					 		pfx_PWM(f_dutyCap, 1);	// CH1 - Q1 - PWM
-					 		pfx_PWM(0, 3); 			// CH3N - Q2 - Full On
+					 		pfx_PWM(1, 3); 			// CH3N - Q2 - Full On
 					 	}
 					break;
 
@@ -64,7 +64,7 @@ void pfx_BLDC() // Main function for commutation
 					 		TIM1->CCER &= 0xFEAB; 	// Turn off Q4 & Q3 & Q6 & Q5
 					 		TIM1->CCER |= 0x401;	// Turn on Q1 & Q2
 					 		pfx_PWM(f_dutyCap, 1);	// CH1 - Q1 - PWM
-					 		pfx_PWM(0, 3); 			// CH3N - Q2 - Full On
+					 		pfx_PWM(1, 3); 			// CH3N - Q2 - Full On
 					 	}
 					break;
 
@@ -72,7 +72,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFEBA; 	// Turn off Q1 & Q4 & Q6 & Q5
 					 		TIM1->CCER |= 0x410;	// Turn on Q3 & Q2
-					 		pfx_PWM(0, 2);			// CH2 - Q3 - Full On
+					 		pfx_PWM(1, 2);			// CH2 - Q3 - Full On
 					 		pfx_PWM(f_dutyCap, 3);	// CH3N - Q2 - PWM
 					 	}
 					break;
@@ -81,7 +81,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFEBA; 	// Turn off Q1 & Q4 & Q6 & Q5
 					 		TIM1->CCER |= 0x410;	// Turn on Q3 & Q2
-					 		pfx_PWM(0, 2);			// CH2 - Q3 - Full On
+					 		pfx_PWM(1, 2);			// CH2 - Q3 - Full On
 					 		pfx_PWM(f_dutyCap, 3);	// CH3N - Q2 - PWM
 					 	}
 					break;
@@ -90,7 +90,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFABE; 	// Turn off Q1 & Q6 & Q5 & Q2
 					 		TIM1->CCER |= 0x14;		// Turn on Q4 & Q3
-					 		pfx_PWM(0, 1);			// CH1N - Q4 - Full On
+					 		pfx_PWM(1, 1);			// CH1N - Q4 - Full On
 					 		pfx_PWM(f_dutyCap, 2);	// CH2 - Q3 - PWM
 					 	}
 					break;
@@ -99,7 +99,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFABE; 	// Turn off Q1 & Q6 & Q5 & Q2
 					 		TIM1->CCER |= 0x14;		// Turn on Q4 & Q3
-					 		pfx_PWM(0, 1);			// CH1N - Q4 - Full On
+					 		pfx_PWM(1, 1);			// CH1N - Q4 - Full On
 					 		pfx_PWM(f_dutyCap, 2);	// CH2 - Q3 - PWM
 					 	}
 					break;
@@ -109,7 +109,7 @@ void pfx_BLDC() // Main function for commutation
 					 		TIM1->CCER &= 0xFABE; 	// Turn off Q1 & Q3 & Q6 & Q2
 					 		TIM1->CCER |= 0x104;	// Turn on Q4 & Q5
 					 		pfx_PWM(f_dutyCap, 1);	// CH1N - Q4 - PWM
-					 		pfx_PWM(0, 3);			// CH3 - Q5 - Full On
+					 		pfx_PWM(1, 3);			// CH3 - Q5 - Full On
 					 	}
 					break;
 
@@ -118,7 +118,7 @@ void pfx_BLDC() // Main function for commutation
 					 		TIM1->CCER &= 0xFABE; 	// Turn off Q1 & Q3 & Q6 & Q2
 					 		TIM1->CCER |= 0x104;	// Turn on Q4 & Q5
 					 		pfx_PWM(f_dutyCap, 1);	// CH1N - Q4 - PWM
-					 		pfx_PWM(0, 3);			// CH3 - Q5 - Full On
+					 		pfx_PWM(1, 3);			// CH3 - Q5 - Full On
 					 	}
 					break;
 
@@ -126,7 +126,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFBEA; 	// Turn off Q1 & Q4 & Q3 & Q2
 					 		TIM1->CCER |= 0x140;	// Turn on Q6 & Q5
-					 		pfx_PWM(0, 2);			// CH2N - Q6 - Full On
+					 		pfx_PWM(1, 2);			// CH2N - Q6 - Full On
 					 		pfx_PWM(f_dutyCap, 3);	// CH3 - Q5 - PWM
 					 	}
 					break;
@@ -135,7 +135,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFBEA; 	// Turn off Q1 & Q4 & Q3 & Q2
 					 		TIM1->CCER |= 0x140;	// Turn on Q6 & Q5
-					 		pfx_PWM(0, 2);			// CH2N - Q6 - Full On
+					 		pfx_PWM(1, 2);			// CH2N - Q6 - Full On
 					 		pfx_PWM(f_dutyCap, 3);	// CH3 - Q5 - PWM
 					 	}
 					break;
@@ -157,7 +157,7 @@ void pfx_BLDC() // Main function for commutation
 					 		TIM1->CCER &= 0xFAEB; 	// Turn off Q4 & Q3 & Q5 & Q2
 					 		TIM1->CCER |= 0x41;		// Turn on Q1 & Q6
 					 		pfx_PWM(f_dutyCap, 1);	// CH1 - Q1 - PWM
-					 		pfx_PWM(0, 2);			// CH2N - Q6 - Full on
+					 		pfx_PWM(1, 2);			// CH2N - Q6 - Full on
 					 	}
 					break;
 
@@ -165,7 +165,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFAEB; 	// Turn off Q4 & Q3 & Q5 & Q2
 					 		TIM1->CCER |= 0x41;		// Turn on Q1 & Q6
-					 		pfx_PWM(0, 1);			// CH1 - Q1 - Full On
+					 		pfx_PWM(1, 1);			// CH1 - Q1 - Full On
 					 		pfx_PWM(f_dutyCap, 2);	// CH2N - Q6 - PWM
 					 	}
 					break;
@@ -174,7 +174,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFEAB; 	// Turn off Q4 & Q3 & Q6 & Q5
 					 		TIM1->CCER |= 0x401;	// Turn on Q1 & Q2
-					 		pfx_PWM(0, 1);			// CH1 - Q1 - Full On
+					 		pfx_PWM(1, 1);			// CH1 - Q1 - Full On
 					 		pfx_PWM(f_dutyCap, 3);	// CH3N - Q2 - PWM
 					 	}
 					break;
@@ -184,7 +184,7 @@ void pfx_BLDC() // Main function for commutation
 					 		TIM1->CCER &= 0xFEAB; 	// Turn off Q4 & Q3 & Q6 & Q5
 					 		TIM1->CCER |= 0x401;	// Turn on Q1 & Q2
 					 		pfx_PWM(f_dutyCap, 1);	// CH1 - Q1 - PWM
-					 		pfx_PWM(0, 3);			// CH3N - Q2 - Full On
+					 		pfx_PWM(1, 3);			// CH3N - Q2 - Full On
 					 	}
 					break;
 
@@ -193,7 +193,7 @@ void pfx_BLDC() // Main function for commutation
 					 		TIM1->CCER &= 0xFEBA; 	// Turn off Q1 & Q4 & Q6 & Q5
 					 		TIM1->CCER |= 0x410;	// Turn on Q3 & Q2
 					 		pfx_PWM(f_dutyCap, 2);	// CH2 - Q3 - PWM
-					 		pfx_PWM(0, 3);			// CH3N - Q2 - Full On
+					 		pfx_PWM(1, 3);			// CH3N - Q2 - Full On
 					 	}
 					break;
 
@@ -201,7 +201,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFEBA; 	// Turn off Q1 & Q4 & Q6 & Q5
 					 		TIM1->CCER |= 0x410;	// Turn on Q3 & Q2
-					 		pfx_PWM(0, 2);			// CH2 - Q3 - Full On
+					 		pfx_PWM(1, 2);			// CH2 - Q3 - Full On
 					 		pfx_PWM(f_dutyCap, 3);	// CH3N - Q2 - PWM
 					 	}
 					break;
@@ -211,7 +211,7 @@ void pfx_BLDC() // Main function for commutation
 					 		TIM1->CCER &= 0xFABE; 	// Turn off Q1 & Q6 & Q5 & Q2
 					 		TIM1->CCER |= 0x14;		// Turn on Q4 & Q3
 					 		pfx_PWM(f_dutyCap, 1);	// CH1N - Q4 - PWM
-					 		pfx_PWM(0, 2);			// CH2 - Q3 - Full On
+					 		pfx_PWM(1, 2);			// CH2 - Q3 - Full On
 					 	}
 					break;
 
@@ -219,7 +219,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFABE; 	// Turn off Q1 & Q6 & Q5 & Q2
 					 		TIM1->CCER |= 0x14;		// Turn on Q4 & Q3
-					 		pfx_PWM(0, 1);			// CH1N - Q4 - Full On
+					 		pfx_PWM(1, 1);			// CH1N - Q4 - Full On
 					 		pfx_PWM(f_dutyCap, 2);	// CH2 - Q3 - PWM
 					 	}
 					break;
@@ -228,7 +228,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFABE; 	// Turn off Q1 & Q3 & Q6 & Q2
 					 		TIM1->CCER |= 0x104;	// Turn on Q4 & Q5
-					 		pfx_PWM(0, 1);			// CH1N - Q4 - Full On
+					 		pfx_PWM(1, 1);			// CH1N - Q4 - Full On
 					 		pfx_PWM(f_dutyCap, 3);	// CH3 - Q5 - PWM
 					 	}
 					break;
@@ -238,7 +238,7 @@ void pfx_BLDC() // Main function for commutation
 					 		TIM1->CCER &= 0xFABE; 	// Turn off Q1 & Q3 & Q6 & Q2
 					 		TIM1->CCER |= 0x104;	// Turn on Q4 & Q5
 					 		pfx_PWM(f_dutyCap, 1);	// CH1N - Q4 - PWM
-					 		pfx_PWM(0, 3);			// CH3 - Q5 - Full On
+					 		pfx_PWM(1, 3);			// CH3 - Q5 - Full On
 					 	}
 					break;
 
@@ -247,7 +247,7 @@ void pfx_BLDC() // Main function for commutation
 					 		TIM1->CCER &= 0xFBEA; 	// Turn off Q1 & Q4 & Q3 & Q2
 					 		TIM1->CCER |= 0x140;	// Turn on Q6 & Q5
 					 		pfx_PWM(f_dutyCap, 2);	// CH2N - Q6 - PWM
-					 		pfx_PWM(0, 3);			// CH3 - Q5 - Full On
+					 		pfx_PWM(1, 3);			// CH3 - Q5 - Full On
 					 	}
 					break;
 
@@ -255,7 +255,7 @@ void pfx_BLDC() // Main function for commutation
 					 	{
 					 		TIM1->CCER &= 0xFBEA; 	// Turn off Q1 & Q4 & Q3 & Q2
 					 		TIM1->CCER |= 0x140;	// Turn on Q6 & Q5
-					 		pfx_PWM(0, 2);			// CH2N - Q6 - Full On
+					 		pfx_PWM(1, 2);			// CH2N - Q6 - Full On
 					 		pfx_PWM(f_dutyCap, 3);	// CH3 - Q5 - PWM
 					 	}
 					break;
