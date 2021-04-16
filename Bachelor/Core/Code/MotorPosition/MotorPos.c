@@ -27,15 +27,16 @@ uint8_t uint8_hallBLDC3 = 0;
 
 uint8_t uint8_positionOld = 0;
 
-uint16_t int16_hallUpperLimit = 2500; // TBD
-uint16_t int16_hallLowerLimit = 2000; // TBD
+int int16_hallUpperLimit = 100000; // TBD
+int int16_hallLowerLimit = 75000; // TBD
 
-uint16_t maxValue = 65535;// timer 6 is a 16-bit counter
-uint16_t timerValue = 0;
-uint16_t timerValueOld = 0;
-uint16_t sinceLastRun = 0;
-uint16_t sinceLastComm = 0;
-
+int maxValue = 65535;// timer 6 is a 16-bit counter
+int timerValue = 0;
+int timerValueOld = 0;
+int sinceLastRun = 0;
+int sinceLastComm = 0;
+int iAliveMotor;
+int iAliveMotor2;
 
 /* Start Code Here */
 
@@ -98,6 +99,7 @@ if(uint8_positionOld != motorpos.uint8_position) // If commutation happened sinc
 {
 	sinceLastComm = sinceLastRun;
 	sinceLastRun = 0;
+	iAliveMotor2 = iAliveMotor2 + 1;
 }
 
 if( motorpos.uint8_position % 2 != 0) // if motorposition is odd incrementation is allowed
@@ -108,15 +110,22 @@ if( motorpos.uint8_position % 2 != 0) // if motorposition is odd incrementation 
 	}
 }
 
+if (sinceLastRun < iAliveMotor )
+{
+	iAliveMotor2 = iAliveMotor2 + 1;
+}
+iAliveMotor = sinceLastRun;
 /*Scheme selector*/
 
 if(motorpos.uint8_scheme == 2  && sinceLastComm <= int16_hallUpperLimit) // Change to slow-scheme due to velocity
 {
 	motorpos.uint8_scheme = 1;
+
 }
 if(sinceLastComm >= int16_hallLowerLimit) // Change to fast-scheme due to velocity /remember hysteresis
 {
 	motorpos.uint8_scheme = 2;
+
 }
 else
 {
