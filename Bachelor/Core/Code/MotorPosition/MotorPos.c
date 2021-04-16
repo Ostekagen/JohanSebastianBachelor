@@ -11,10 +11,7 @@
 #include "PWM.h"
 #include <stdio.h>
 #include <stdint.h>
-#include "stm32f4xx_hal_tim.h"
 
-TIM_HandleTypeDef htim6;
-TIM_OC_InitTypeDef sConfigOC;
 
  /* External Variables */
 
@@ -27,16 +24,14 @@ uint8_t uint8_hallBLDC3 = 0;
 
 uint8_t uint8_positionOld = 0;
 
-int int16_hallUpperLimit = 100000; // TBD
-int int16_hallLowerLimit = 75000; // TBD
+uint32_t int16_hallUpperLimit = 20000; // TBD
+uint32_t int16_hallLowerLimit = 15000; // TBD
 
-int maxValue = 65535;// timer 6 is a 16-bit counter
-int timerValue = 0;
-int timerValueOld = 0;
-int sinceLastRun = 0;
-int sinceLastComm = 0;
-int iAliveMotor;
-int iAliveMotor2;
+uint32_t maxValue = 4294967295;// 32 bit max
+uint32_t timerValue = 0;
+uint32_t timerValueOld = 0;
+uint32_t sinceLastRun = 0;
+uint32_t sinceLastComm = 0;
 
 /* Start Code Here */
 
@@ -81,25 +76,13 @@ else
 
 /*30 degrees commutation*/
 
-timerValueOld = timerValue; // save old timer value
-timerValue = __HAL_TIM_GetCounter(&htim6);  // save new timer value
-
-
-if(timerValue < timerValueOld) // in case of overflow
-{
-	sinceLastRun += ((maxValue - timerValueOld + timerValue)/15000);
-}
-else
-{
-	sinceLastRun +=  ((timerValue - timerValueOld)/15000); // Count ups until saved in sinceLastComm
-}
+sinceLastRun = sinceLastRun + 1; // overflow only happens when running slow. No protection needed
 
 
 if(uint8_positionOld != motorpos.uint8_position) // If commutation happened since last
 {
 	sinceLastComm = sinceLastRun;
 	sinceLastRun = 0;
-	iAliveMotor2 = iAliveMotor2 + 1;
 }
 
 if( motorpos.uint8_position % 2 != 0) // if motorposition is odd incrementation is allowed
@@ -110,11 +93,7 @@ if( motorpos.uint8_position % 2 != 0) // if motorposition is odd incrementation 
 	}
 }
 
-if (sinceLastRun < iAliveMotor )
-{
-	iAliveMotor2 = iAliveMotor2 + 1;
-}
-iAliveMotor = sinceLastRun;
+
 /*Scheme selector*/
 
 if(motorpos.uint8_scheme == 2  && sinceLastComm <= int16_hallUpperLimit) // Change to slow-scheme due to velocity
