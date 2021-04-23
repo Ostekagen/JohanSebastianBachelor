@@ -36,7 +36,7 @@ void pfx_PWM(float f_dutyCycle, uint8_t uint8_timerChannel)	// Starts the approp
 			{
 				TIM1->CCR2 = f_dutyCycle*3000.0; 	// Applies a counter value scaled by duty cycle (between 0.0 - 1.0) to Timer 1 Channel 2
 			}
-		else if(uint8_timerChannel == 3)				// Checks for Channel number
+		else if(uint8_timerChannel == 3)			// Checks for Channel number
 			{
 				TIM1->CCR3 = f_dutyCycle*3000.0;	// Applies a counter value scaled by duty cycle (between 0.0 - 1.0) to Timer 1 Channel 3
 			}

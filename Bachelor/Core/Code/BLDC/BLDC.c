@@ -14,14 +14,14 @@
 #include "MotorPos.h"
 #include "main.h"
 
-TIM_HandleTypeDef htim1;
-TIM_OC_InitTypeDef sConfigOC;
+TIM_HandleTypeDef htim1;			// Timer1 Type Def
+TIM_OC_InitTypeDef sConfigOC;		// Initiate Timer1
 
 /* External Variables */
 extern struct ST_MOTORPOS motorpos; // initiating external struct
 
 /* Internal Variables */
-float f_dutyCap; // Setting internal variable for duty cycle
+float f_dutyCap; // Setting internal variable for duty cycle - TODO: Remove value after test
 
 /* Start Code Here */
 void pfx_BLDC() // Main function for commutation
@@ -106,7 +106,7 @@ void pfx_BLDC() // Main function for commutation
 
 					case 9 : // 270-300 degrees
 					 	{
-					 		TIM1->CCER &= 0xFABE; 	// Turn off Q1 & Q3 & Q6 & Q2
+					 		TIM1->CCER &= 0xFBAE; 	// Turn off Q1 & Q3 & Q6 & Q2
 					 		TIM1->CCER |= 0x104;	// Turn on Q4 & Q5
 					 		pfx_PWM(f_dutyCap, 1);	// CH1N - Q4 - PWM
 					 		pfx_PWM(1, 3);			// CH3 - Q5 - Full On
@@ -142,8 +142,8 @@ void pfx_BLDC() // Main function for commutation
 
 					default :
 						{
-						TIM1->CCER &= 0xFAAA; 		// Turn off Q1 & Q4 & Q3 & Q6 & Q5 & Q2
-						pfx_PWM_Stop();				// Turn off all PWM by applying compare value larger than counter
+							TIM1->CCER &= 0xFAAA; 		// Turn off Q1 & Q4 & Q3 & Q6 & Q5 & Q2
+							pfx_PWM_Stop();				// Turn off all PWM by applying compare value larger than counter
 						}
 
 				}
@@ -226,7 +226,7 @@ void pfx_BLDC() // Main function for commutation
 
 					case 9 : // 270-300 degrees
 					 	{
-					 		TIM1->CCER &= 0xFABE; 	// Turn off Q1 & Q3 & Q6 & Q2
+					 		TIM1->CCER &= 0xFBAE; 	// Turn off Q1 & Q3 & Q6 & Q2
 					 		TIM1->CCER |= 0x104;	// Turn on Q4 & Q5
 					 		pfx_PWM(1, 1);			// CH1N - Q4 - Full On
 					 		pfx_PWM(f_dutyCap, 3);	// CH3 - Q5 - PWM
