@@ -49,6 +49,10 @@ float pfx_ramp(uint8_t uint8_scheme)
 			{
 				f_lastOutput = int16_throttleCalc;
 			}
+			else
+			{
+				f_lastOutput = 0;
+			}
 		}
 
 		// Scheme 2
@@ -62,6 +66,14 @@ float pfx_ramp(uint8_t uint8_scheme)
 			{
 				f_lastOutput = int16_throttleCalc;
 			}
+			else
+			{
+				f_lastOutput = 0;
+			}
+		}
+		else
+		{
+			f_lastOutput = 0;
 		}
 
 		f_dutyCap = f_lastOutput/1000;	// set our output to a value between 0 and 1
