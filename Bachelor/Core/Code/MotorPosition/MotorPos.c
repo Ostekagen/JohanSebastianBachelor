@@ -24,26 +24,35 @@ uint8_t uint8_hallBLDC3 = 0;
 
 uint8_t uint8_positionOld = 0;
 
-uint32_t int16_hallUpperLimit = 20000; // TBD
-uint32_t int16_hallLowerLimit = 15000; // TBD
+uint32_t int16_hallUpperLimit = 100; // TBD
+uint32_t int16_hallLowerLimit = 300; // TBD
 
 uint32_t maxValue = 4294967295;// 32 bit max
 uint32_t timerValue = 0;
 uint32_t timerValueOld = 0;
 uint32_t sinceLastRun = 0;
-uint32_t sinceLastComm = 0;
+uint32_t sinceLastComm = 500;
+int iAliveMP1 = 0;
+int iAliveMP2 = 0;
+int scanCycle = 0;
 
 /* Start Code Here */
 
 struct ST_MOTORPOS pfx_MotorPos() // main function
 {
+	sinceLastRun = sinceLastRun + 1; // overflow only happens when running slow. No protection needed
+	iAliveMP1 = iAliveMP1 + 1;
+
 
 uint8_hallBLDC1 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_10); // read value from gpio-pin (5v tolerant)
 uint8_hallBLDC2 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_11);
 uint8_hallBLDC3 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_12);
 
 /*60 degrees commutation*/
-uint8_positionOld = motorpos.uint8_position; // save old
+if(motorpos.uint8_position % 2 != 0)
+		{
+		uint8_positionOld = motorpos.uint8_position; // save old
+		}
 
 if(uint8_hallBLDC1 == 0 && uint8_hallBLDC2 == 0 && uint8_hallBLDC3 == 1 && motorpos.uint8_position != 2 ) // see truth table
 	{
@@ -76,13 +85,13 @@ else
 
 /*30 degrees commutation*/
 
-sinceLastRun = sinceLastRun + 1; // overflow only happens when running slow. No protection needed
 
 
-if(uint8_positionOld != motorpos.uint8_position) // If commutation happened since last
+if((motorpos.uint8_position % 2 != 0) && (uint8_positionOld != motorpos.uint8_position)) // If commutation happened since last
 {
 	sinceLastComm = sinceLastRun;
 	sinceLastRun = 0;
+	iAliveMP2 = iAliveMP2 +1;
 }
 
 if( motorpos.uint8_position % 2 != 0) // if motorposition is odd incrementation is allowed
@@ -96,12 +105,12 @@ if( motorpos.uint8_position % 2 != 0) // if motorposition is odd incrementation 
 
 /*Scheme selector*/
 
-if(motorpos.uint8_scheme == 2  && sinceLastComm <= int16_hallUpperLimit) // Change to slow-scheme due to velocity
+if(motorpos.uint8_scheme == 2  && sinceLastComm >= int16_hallUpperLimit) // Change to slow-scheme due to velocity
 {
 	motorpos.uint8_scheme = 1;
 
 }
-if(sinceLastComm >= int16_hallLowerLimit) // Change to fast-scheme due to velocity /remember hysteresis
+if(sinceLastComm <= int16_hallLowerLimit) // Change to fast-scheme due to velocity /remember hysteresis
 {
 	motorpos.uint8_scheme = 2;
 
