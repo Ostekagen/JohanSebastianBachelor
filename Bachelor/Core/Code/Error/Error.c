@@ -35,7 +35,7 @@ uint8_t pfx_error()
 			{
 				uint8_errorStatus = 1;	// Current Status - Set error if current too high
 			}
-		else if(uint16_throttleSignal < 600) // throttle status - check throttle signal < error threshold TODO: Find correct value
+		else if(uint16_throttleSignal < 400) // throttle status - check throttle signal < error threshold -  Offset is 690, go lower for buffer
 			{
 				uint8_errorStatus = 1;	// Throttle Status - Set error if throttle is missing
 			}

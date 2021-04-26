@@ -37,7 +37,6 @@ void pfx_stateInterruptFunction()
 				{
 					case 0 : // Standby Mode
 					 	{
-					 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);
 					 		pfx_PWM_Stop();	// PWM STOP
 					 		if (pfx_error() != 0)
 					 		 	{
@@ -72,7 +71,6 @@ void pfx_stateInterruptFunction()
 							else
 								{
 									pfx_BLDC();
-									HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);
 								}
 						}
 
@@ -82,7 +80,6 @@ void pfx_stateInterruptFunction()
 						{
 							TIM1->CCER &= 0xFAAA;	// Sluk alle MOSFET
 							pfx_PWM_Stop();			// Stop The PWM
-							HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);
 							if (pfx_error() == 0)
 								{
 									State = 0;
