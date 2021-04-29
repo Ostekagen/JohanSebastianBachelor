@@ -17,14 +17,15 @@
 #include "main.h"
 
 /* External Variables */
-float f_dutyCap;
-uint16_t int16_throttleCalc;
+float f_dutyCapRAMP;
+uint16_t int16_throttleCalcRAMP;
 
 /* Internal Variables */
 int counter;
 float f_lastOutput;
 float f_gain1 = 1.00033f;
 float f_gain2 = 1.001;
+uint16_t throttleTest;
 
 /* Start Code Here */
 
@@ -32,22 +33,22 @@ float f_gain2 = 1.001;
 float pfx_ramp(uint8_t uint8_scheme)
 	{
 
-		int16_throttleCalc = pfx_throttle();	// Calling Throttle function
+		int16_throttleCalcRAMP = pfx_throttle();	// Calling Throttle function
 
 		// Scheme 1
 		if(uint8_scheme == 1)
 		{
-			if ((f_lastOutput == 0) && (int16_throttleCalc > 0))	// To ensure the throttle output only is zero when the throttle is not pulled
+			if ((f_lastOutput == 0) && (int16_throttleCalcRAMP > 0))	// To ensure the throttle output only is zero when the throttle is not pulled
 			{
 				f_lastOutput = 0.1;
 			}
-			if (f_lastOutput < int16_throttleCalc)	// When throttle output is higher than our last output, increase our output
+			if (f_lastOutput < int16_throttleCalcRAMP)	// When throttle output is higher than our last output, increase our output
 			{
 				f_lastOutput = f_lastOutput*f_gain1;
 			}
-			else if (f_lastOutput >= int16_throttleCalc)	// When last output is less or equal to the throttle output, set output to throttle output
+			else if (f_lastOutput >= int16_throttleCalcRAMP)	// When last output is less or equal to the throttle output, set output to throttle output
 			{
-				f_lastOutput = int16_throttleCalc;
+				f_lastOutput = int16_throttleCalcRAMP;
 			}
 			else
 			{
@@ -58,13 +59,13 @@ float pfx_ramp(uint8_t uint8_scheme)
 		// Scheme 2
 		else if (uint8_scheme == 2)
 		{
-			if (f_lastOutput < int16_throttleCalc)
+			if (f_lastOutput < int16_throttleCalcRAMP)
 			{
-				f_lastOutput = f_lastOutput*f_gain2;	// Skal være anderledes end den anden
+				f_lastOutput = f_lastOutput*f_gain2;
 			}
-			else if (f_lastOutput >= int16_throttleCalc)
+			else if (f_lastOutput >= int16_throttleCalcRAMP)
 			{
-				f_lastOutput = int16_throttleCalc;
+				f_lastOutput = int16_throttleCalcRAMP;
 			}
 			else
 			{
@@ -76,7 +77,7 @@ float pfx_ramp(uint8_t uint8_scheme)
 			f_lastOutput = 0;
 		}
 
-		f_dutyCap = f_lastOutput/1000;	// set our output to a value between 0 and 1
+		f_dutyCapRAMP = f_lastOutput/1000;	// set our output to a value between 0 and 1
 
-		return f_dutyCap;
+		return f_dutyCapRAMP;
 	}

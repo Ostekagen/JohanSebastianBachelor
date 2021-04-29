@@ -22,7 +22,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "SystemMeasurements.h"
+#include "StateMachine.h"
+#include "Ramp.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -114,7 +116,7 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 
- 	MX_TIM1_Init();
+	MX_TIM1_Init();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -164,9 +166,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 while (1)
   {
-	/* Error.c Test Start */
-
-	/* Error.c Test End */
 
     /* USER CODE END WHILE */
 
