@@ -112,7 +112,7 @@ if(motorpos.uint8_scheme == 2  && sinceLastComm >= int16_hallUpperLimit) // Chan
 }
 if(sinceLastComm <= int16_hallLowerLimit) // Change to fast-scheme due to velocity /remember hysteresis
 {
-	motorpos.uint8_scheme = 2;
+	motorpos.uint8_scheme = 1;//2; Removed scheme 2
 
 }
 else
