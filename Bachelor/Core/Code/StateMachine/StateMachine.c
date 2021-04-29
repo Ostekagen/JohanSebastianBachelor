@@ -19,14 +19,14 @@
 #include "PWM.h"
 
 TIM_HandleTypeDef htim1;
-TIM_OC_InitTypeDef sConfigOC;
+//TIM_OC_InitTypeDef sConfigOC;
 
 /* External Variables */
 extern struct ST_MOTORPOS motorpos; // Initiating external struct
 
 /* Internal Variables */
 int8_t State = 3;		// Initiating State to 3 (Init State)
-int8_t InitCount = 0;	// Initiating Start-Up counter to 0
+int16_t InitCount = 0;	// Initiating Start-Up counter to 0
 
 
 /* Start Code here */
@@ -88,14 +88,14 @@ void pfx_stateInterruptFunction()
 
 					case 3 : // Initiation State
 						{
-							if(InitCount == 0)				// Setting up charge up of Boot Capacitor
-								{
+							//if(InitCount == 0)				// Setting up charge up of Boot Capacitor
+								//{
 									TIM1->CCER &= 0xFEEE; 	// Turn off High Channels
 									TIM1->CCER |= 0x444;	// Turn on Low Channels
 									pfx_PWM(1, 1);			// Full signal on CH1N
 									pfx_PWM(1, 2);			// Full signal on CH2N
 									pfx_PWM(1, 3);			// Full signal on CH3N
-								}
+								//}
 							if(InitCount == 2000)			// Enter Standby Mode after 2000 counts (0.15 seconds)
 								{
 									State = 0;
