@@ -56,27 +56,27 @@ if(motorpos.uint8_position % 2 != 0)
 
 if(uint8_hallBLDC1 == 0 && uint8_hallBLDC2 == 0 && uint8_hallBLDC3 == 1 && motorpos.uint8_position != 2 ) // see truth table
 	{
-	motorpos.uint8_position = 1; // write new
+	motorpos.uint8_position = 7; // write new
 	}
 else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 0 && uint8_hallBLDC3 == 1 && motorpos.uint8_position != 4)
 	{
-	motorpos.uint8_position = 3;
+	motorpos.uint8_position = 5;
 	}
 else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 0 && uint8_hallBLDC3 == 0 && motorpos.uint8_position != 6)
 	{
-	motorpos.uint8_position = 5;
+	motorpos.uint8_position = 3;
 	}
 else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 1 && uint8_hallBLDC3 == 0 && motorpos.uint8_position != 8)
 	{
-	motorpos.uint8_position = 7;
+	motorpos.uint8_position = 1;
 	}
 else if(uint8_hallBLDC1 == 0 && uint8_hallBLDC2 == 1 && uint8_hallBLDC3 == 0 && motorpos.uint8_position != 10)
 	{
-	motorpos.uint8_position = 9;
+	motorpos.uint8_position = 11;
 	}
 else if(uint8_hallBLDC1 == 0 && uint8_hallBLDC2 == 1 && uint8_hallBLDC3 == 1 && motorpos.uint8_position != 12)
 	{
-	motorpos.uint8_position = 11;
+	motorpos.uint8_position = 9;
 	}
 else
 	{
