@@ -34,27 +34,27 @@ uint8_hallBLDC3 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_12);
 
 if(uint8_hallBLDC1 == 0 && uint8_hallBLDC2 == 0 && uint8_hallBLDC3 == 1 ) // see truth table
 	{
-	uint8_position = 1; // write new
+	uint8_position = 4; // write new
 	}
 else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 0 && uint8_hallBLDC3 == 1 )
 	{
-	uint8_position = 2;
+	uint8_position = 3;
 	}
 else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 0 && uint8_hallBLDC3 == 0 )
 	{
-	uint8_position = 3;
+	uint8_position = 2;
 	}
 else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 1 && uint8_hallBLDC3 == 0 )
 	{
-	uint8_position = 4;
+	uint8_position = 1;
 	}
 else if(uint8_hallBLDC1 == 0 && uint8_hallBLDC2 == 1 && uint8_hallBLDC3 == 0 )
 	{
-	uint8_position = 5;
+	uint8_position = 6;
 	}
 else if(uint8_hallBLDC1 == 0 && uint8_hallBLDC2 == 1 && uint8_hallBLDC3 == 1 )
 	{
-	uint8_position = 6;
+	uint8_position = 5;
 	}
 else
 	{
