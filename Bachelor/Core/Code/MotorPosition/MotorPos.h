@@ -8,8 +8,8 @@
 #ifndef CODE_MOTORPOSITION_MOTORPOS_H_
 #define CODE_MOTORPOSITION_MOTORPOS_H_
 
-struct ST_MOTORPOS{uint8_t uint8_position;uint8_t uint8_scheme;}motorpos;
+uint8_t uint8_position;
 
-struct ST_MOTORPOS pfx_MotorPos();
+uint8_t pfx_MotorPos();
 
 #endif /* CODE_MOTORPOSITION_MOTORPOS_H_ */
