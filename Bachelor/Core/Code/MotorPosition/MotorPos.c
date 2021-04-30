@@ -63,5 +63,3 @@ else
 
 return uint8_position;
 }
-
-
