@@ -1,4 +1,3 @@
-
 /*
  * StateMachine.c
  *
@@ -24,9 +23,8 @@ TIM_HandleTypeDef htim1;
 /* External Variables */
 
 /* Internal Variables */
-int8_t int8_state = 3;		// Initiating State to 3 (Init State)
+int8_t int8_state = 3;			// Initiating State to 3 (Init State)
 int16_t int16_initCount = 0;	// Initiating Start-Up counter to 0
-
 
 /* Start Code here */
 void pfx_stateInterruptFunction()
@@ -77,7 +75,12 @@ void pfx_stateInterruptFunction()
 						{
 							TIM1->CCER &= 0xFAAA;	// Sluk alle MOSFET
 							pfx_PWM_Stop();			// Stop The PWM
-							if (pfx_error() == 0)	// System error reset
+							if(pfx_error() == 0 && int16_initCount < 2250)	// System error reset (initiation error)
+								{
+									int16_initCount = 0;	// Reset init counter
+									int8_state = 3;			// Set to initiation state
+								}
+							else if (pfx_error() == 0)	// System error reset
 								{
 									int8_state = 0;		// Set to standby state
 								}
@@ -93,22 +96,20 @@ void pfx_stateInterruptFunction()
 								}
 							else if(int16_initCount == 0)		// Setting up charge up of Boot Capacitor
 								{
+									HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
 									TIM1->CCER &= 0xFEEE; 	// Turn off High Channels
 									TIM1->CCER |= 0x444;	// Turn on Low Channels
 									pfx_PWM(1, 1);			// Full signal on CH1N
 									pfx_PWM(1, 2);			// Full signal on CH2N
 									pfx_PWM(1, 3);			// Full signal on CH3N
 								}
-							else if(int16_initCount == 2000)			// Enter Standby Mode after 2000 counts (0.15 seconds)
+							else if(int16_initCount == 2250)			// Enter Standby Mode after 2250 counts (0.15 seconds)
 								{
+									HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
 									int8_state = 0;
 								}
-							else
-								{
-									int16_initCount++;
-								}
+							int16_initCount++;
 						}
-
 
 					break;
 
@@ -116,6 +117,5 @@ void pfx_stateInterruptFunction()
 						{
 							int8_state = 2;				// default setting is error state
 						}
-
 				}
 	}
