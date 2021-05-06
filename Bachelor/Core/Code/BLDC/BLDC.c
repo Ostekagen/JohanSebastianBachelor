@@ -21,12 +21,12 @@ TIM_HandleTypeDef htim1;			// Timer1 Type Def
 extern uint8_t uint8_position; // initiating external struct
 
 /* Internal Variables */
-float f_dutyCap = 0.75; // Setting internal variable for duty cycle - TODO: Remove value after test
+float f_dutyCap; // Setting internal variable for duty cycle - TODO: Remove value after test
 
 /* Start Code Here */
 void pfx_BLDC() // Main function for commutation
 {
-	//f_dutyCap = pfx_ramp(motorpos.uint8_scheme);
+	f_dutyCap = pfx_ramp(motorpos.uint8_scheme);
 
 	switch(uint8_position)
 		{
