@@ -22,10 +22,11 @@ uint16_t int16_throttleCalcRAMP;
 
 /* Internal Variables */
 int counter;
-float f_lastOutput;
+float f_lastOutput=0.1;
 float f_gain1 = 1.00033f;
 float f_gain2 = 1.001;
 uint16_t throttleTest;
+float John;
 
 /* Start Code Here */
 
@@ -76,8 +77,13 @@ float pfx_ramp(uint8_t uint8_scheme)
 		{
 			f_lastOutput = 0;
 		}
+		John = pfx_throttle();
+		f_dutyCapRAMP = John/1000;	// set our output to a value between 0 and 1
 
-		f_dutyCapRAMP = f_lastOutput/1000;	// set our output to a value between 0 and 1
+		if (f_dutyCapRAMP > 0.95)
+			{
+				f_dutyCapRAMP = 0.9;
+			}
 
 		return f_dutyCapRAMP;
 	}
