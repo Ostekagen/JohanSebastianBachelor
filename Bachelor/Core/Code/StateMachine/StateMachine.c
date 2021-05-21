@@ -65,11 +65,11 @@ void pfx_stateInterruptFunction()
 								{
 									int8_state = 0;				// Set to standby state
 								}
-/*							else if (HAL_GPIO_ReadPin(GPIOx, GPIO_PIN_xx) == 1)
+							else if (HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_2) == 1)
 								{
 									int8_state = 4;
 								}
-*/							else
+							else
 								{
 									pfx_BLDC(int8_state);				// Commutate with BLDC function
 									int8_stateCounter = 1;
@@ -132,7 +132,7 @@ void pfx_stateInterruptFunction()
 								{
 									int8_state = 0;				// Set to standby state
 								}
-							else if(HAL_GPIO_ReadPin(GPIOx, GPIO_PIN_xx) == 0)
+							else if(HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_2) == 0)
 								{
 									int8_state = 1;
 								}
