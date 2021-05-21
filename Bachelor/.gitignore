@@ -145,5 +145,4 @@ Debug/*
 *.o
 .mxproject
 *.launch
-*.ioc
 *.ld
