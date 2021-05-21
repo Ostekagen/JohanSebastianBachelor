@@ -54,7 +54,7 @@ float pfx_ramp()
 		}
 
 
-		if (f_dutyCapRAMP > 0.95)
+		if (f_dutyCapRAMP > 0.9)
 		{
 			f_dutyCapRAMP = 0.9;
 		}

@@ -25,6 +25,7 @@ TIM_HandleTypeDef htim1;
 /* Internal Variables */
 int8_t int8_state = 3;			// Initiating State to 3 (Init State)
 int16_t int16_initCount = 0;	// Initiating Start-Up counter to 0
+int8_t int8_stateCounter;
 
 /* Start Code here */
 void pfx_stateInterruptFunction()
@@ -37,6 +38,7 @@ void pfx_stateInterruptFunction()
 					case 0 : // Standby Mode
 					 	{
 					 		pfx_PWM_Stop();	// PWM STOP
+					 		int8_stateCounter = 0;
 					 		if (pfx_error() != 0) 			// System error activated
 					 		 	{
 					 		 		int8_state = 2;				// Set to error state
@@ -63,9 +65,14 @@ void pfx_stateInterruptFunction()
 								{
 									int8_state = 0;				// Set to standby state
 								}
-							else
+/*							else if (HAL_GPIO_ReadPin(GPIOx, GPIO_PIN_xx) == 1)
 								{
-									pfx_BLDC();				// Commutate with BLDC function
+									int8_state = 4;
+								}
+*/							else
+								{
+									pfx_BLDC(int8_state);				// Commutate with BLDC function
+									int8_stateCounter = 1;
 								}
 						}
 
@@ -75,6 +82,7 @@ void pfx_stateInterruptFunction()
 						{
 							TIM1->CCER &= 0xFAAA;	// Sluk alle MOSFET
 							pfx_PWM_Stop();			// Stop The PWM
+							int8_stateCounter = 2;
 							if(pfx_error() == 0 && int16_initCount < 2250)	// System error reset (initiation error)
 								{
 									int16_initCount = 0;	// Reset init counter
@@ -102,6 +110,7 @@ void pfx_stateInterruptFunction()
 									pfx_PWM(1, 1);			// Full signal on CH1N
 									pfx_PWM(1, 2);			// Full signal on CH2N
 									pfx_PWM(1, 3);			// Full signal on CH3N
+									int8_stateCounter = 3;
 								}
 							else if(int16_initCount == 2250)			// Enter Standby Mode after 2250 counts (0.15 seconds)
 								{
@@ -111,6 +120,28 @@ void pfx_stateInterruptFunction()
 							int16_initCount++;
 						}
 
+					break;
+
+					case 4 :
+						{
+							if (pfx_error() != 0)			// System error activated
+								{
+									int8_state = 2;				// Set to error state
+								}
+							else if (pfx_brake() !=0)		// System brake activated
+								{
+									int8_state = 0;				// Set to standby state
+								}
+							else if(HAL_GPIO_ReadPin(GPIOx, GPIO_PIN_xx) == 0)
+								{
+									int8_state = 1;
+								}
+							else
+								{
+									pfx_BLDC(int8_state);
+									int8_stateCounter=4;
+								}
+						}
 					break;
 
 					default :

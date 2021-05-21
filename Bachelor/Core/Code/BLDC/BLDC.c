@@ -18,15 +18,22 @@
 TIM_HandleTypeDef htim1;			// Timer1 Type Def
 
 /* External Variables */
-extern uint8_t uint8_position; // initiating external struct
-
+extern uint8_t uint8_position; // initiating external variable
+extern int8_t int8_stateCounter; //
 /* Internal Variables */
 float f_dutyCap; // Setting internal variable for duty cycle - TODO: Remove value after test
 
 /* Start Code Here */
-void pfx_BLDC() // Main function for commutation
+void pfx_BLDC(int8_t state) // Main function for commutation
 {
-	f_dutyCap = pfx_ramp(1);
+	if(state == 1)	// Check for Drive Mode
+		{
+			f_dutyCap = pfx_ramp(); // Manual Mode Duty Cycle
+		}
+	if(state == 4)	// Check for Drive Mode
+		{
+			f_dutyCap = pfx_currentControl(int8_stateCounter); // Auto Pilot Duty Cycle
+		}
 
 	switch(uint8_position)
 		{
