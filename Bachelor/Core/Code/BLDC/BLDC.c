@@ -32,7 +32,7 @@ void pfx_BLDC(int8_t state) // Main function for commutation
 		}
 	if(state == 4)	// Check for Drive Mode
 		{
-			f_dutyCap = pfx_currentControl(int8_stateCounter); // Auto Pilot Duty Cycle
+//			f_dutyCap = pfx_currentControl(int8_stateCounter); // Auto Pilot Duty Cycle
 		}
 
 	switch(uint8_position)
