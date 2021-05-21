@@ -70,6 +70,8 @@ void Error_Handler(void);
 #define H2_GPIO_GPIO_Port GPIOC
 #define H3_GPIO_Pin GPIO_PIN_12
 #define H3_GPIO_GPIO_Port GPIOC
+#define Auto_Pilot_Switch_Pin GPIO_PIN_2
+#define Auto_Pilot_Switch_GPIO_Port GPIOD
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
