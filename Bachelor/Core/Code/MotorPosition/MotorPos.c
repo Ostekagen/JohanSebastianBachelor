@@ -8,7 +8,6 @@
 
 /* Includes */
 #include "main.h"
-#include "PWM.h"
 #include <stdio.h>
 #include <stdint.h>
 
@@ -58,7 +57,7 @@ else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 1 && uint8_hallBLDC3 == 0 )
 	}
 else
 	{
-	pfx_PWM_Stop();				// Turn off all PWM by applying compare value larger than counter
+	uint8_position = 7;				// Turn off all PWM by applying compare value larger than counter
 	}
 
 return uint8_position;

@@ -18,24 +18,23 @@
 TIM_HandleTypeDef htim1;			// Timer1 Type Def
 
 /* External Variables */
-extern uint8_t uint8_position; // initiating external variable
 extern int8_t int8_stateCounter; //
 /* Internal Variables */
 float f_dutyCap; // Setting internal variable for duty cycle - TODO: Remove value after test
 
 /* Start Code Here */
-void pfx_BLDC(int8_t state) // Main function for commutation
+void pfx_BLDC(int8_t int8_state,uint8_t uint8_pos) // Main function for commutation
 {
-	if(state == 1)	// Check for Drive Mode
+	if(int8_state == 1)	// Check for Drive Mode
 		{
 			f_dutyCap = pfx_ramp(); // Manual Mode Duty Cycle
 		}
-	if(state == 4)	// Check for Drive Mode
+	if(int8_state == 4)	// Check for Drive Mode
 		{
 //			f_dutyCap = pfx_currentControl(int8_stateCounter); // Auto Pilot Duty Cycle
 		}
 
-	switch(uint8_position)
+	switch(uint8_pos)
 		{
 			case 1 : // 30-90 degrees
 				{
@@ -44,7 +43,7 @@ void pfx_BLDC(int8_t state) // Main function for commutation
 					TIM1->CCER |= 0x141;		// Turn on Q1 & Q6 & Q5
 					pfx_PWM(f_dutyCap, 1);		// CH1 - Q1 - Full On
 					pfx_PWM(1, 2);				// CH2N - Q6 - PWM
-					}
+				}
 			break;
 			case 2 : // 90-150 degrees
 				{
@@ -53,7 +52,7 @@ void pfx_BLDC(int8_t state) // Main function for commutation
 					TIM1->CCER |= 0x411;		// Turn on Q1 & Q2
 					pfx_PWM(f_dutyCap, 1);		// CH1 - Q1 - PWM
 					pfx_PWM(1, 3); 				// CH3N - Q2 - Full On
-					}
+				}
 			break;
 			case 3 : // 150-210 degrees
 				{
@@ -62,7 +61,7 @@ void pfx_BLDC(int8_t state) // Main function for commutation
 					TIM1->CCER |= 0x411;		// Turn on Q3 & Q2
 					pfx_PWM(f_dutyCap, 2);		// CH2 - Q3 - Full On
 					pfx_PWM(1, 3);				// CH3N - Q2 - PWM
-					}
+				}
 			break;
 			case 4 : // 210-270 degrees
 				{
@@ -71,7 +70,7 @@ void pfx_BLDC(int8_t state) // Main function for commutation
 					TIM1->CCER |= 0x114;		// Turn on Q4 & Q3
 					pfx_PWM(1, 1);				// CH1N - Q4 - Full On
 					pfx_PWM(f_dutyCap, 2);		// CH2 - Q3 - PWM
-					}
+				}
 			break;
 			case 5 : // 270-330 degrees
 				{
@@ -80,7 +79,7 @@ void pfx_BLDC(int8_t state) // Main function for commutation
 					TIM1->CCER |= 0x114;		// Turn on Q4 & Q5
 					pfx_PWM(1, 1);				// CH1N - Q4 - PWM
 					pfx_PWM(f_dutyCap, 3);		// CH3 - Q5 - Full On
-					}
+				}
 			break;
 			case 6 : // 330-30 degrees
 				{
@@ -89,7 +88,13 @@ void pfx_BLDC(int8_t state) // Main function for commutation
 					TIM1->CCER |= 0x141;		// Turn on Q6 & Q5
 					pfx_PWM(1, 2);				// CH2N - Q6 - Full On
 					pfx_PWM(f_dutyCap, 3);		// CH3 - Q5 - PWM
-					}
+				}
+			break;
+			case 7 : // 330-30 degrees
+				{
+					TIM1->CCER &= 0xFAAA; 		// Turn off Q1 & Q4 & Q3 & Q6 & Q5 & Q2
+					pfx_PWM_Stop();				// Turn off all PWM by applying compare value larger than counter
+				}
 			break;
 			default :
 				{

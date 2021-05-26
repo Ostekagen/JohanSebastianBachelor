@@ -37,7 +37,7 @@ void pfx_stateInterruptFunction()
 				{
 					case 0 : // Standby Mode
 					 	{
-					 		pfx_PWM_Stop();	// PWM STOP
+					 		pfx_BLDC(1,7);	// Sluk Mosfets og stop PWM
 					 		int8_stateCounter = 0;
 					 		if (pfx_error() != 0) 			// System error activated
 					 		 	{
@@ -71,7 +71,7 @@ void pfx_stateInterruptFunction()
 								}
 							else
 								{
-									pfx_BLDC(int8_state);				// Commutate with BLDC function
+									pfx_BLDC(int8_state,uint8_position);				// Commutate with BLDC function
 									int8_stateCounter = 1;
 								}
 						}
@@ -80,8 +80,7 @@ void pfx_stateInterruptFunction()
 
 					case 2 : // Error Mode
 						{
-							TIM1->CCER &= 0xFAAA;	// Sluk alle MOSFET
-							pfx_PWM_Stop();			// Stop The PWM
+							pfx_BLDC(1,7);	// Sluk Mosfets og stop PWM
 							int8_stateCounter = 2;
 							if(pfx_error() == 0 && int16_initCount < 2250)	// System error reset (initiation error)
 								{
@@ -138,7 +137,7 @@ void pfx_stateInterruptFunction()
 								}
 							else
 								{
-									pfx_BLDC(int8_state);
+									pfx_BLDC(int8_state,uint8_position);
 									int8_stateCounter=4;
 								}
 						}
