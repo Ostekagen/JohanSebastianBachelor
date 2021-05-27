@@ -1,0 +1,102 @@
+Configuration	Bachelor
+STM32CubeMX 	6.2.0
+Date	05/27/2021
+MCU	STM32F446RETx
+
+
+
+PERIPHERALS	MODES	FUNCTIONS	PINS
+ADC1	IN3	ADC1_IN3	PA3
+ADC1	IN11	ADC1_IN11	PC1
+ADC2	IN15	ADC2_IN15	PC5
+ADC3	IN1	ADC3_IN1	PA1
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+TIM1	Internal Clock	TIM1_VS_ClockSourceINT	VP_TIM1_VS_ClockSourceINT
+TIM1	PWM Generation CH1 CH1N	TIM1_CH1	PA8
+TIM1	PWM Generation CH1 CH1N	TIM1_CH1N	PA7
+TIM1	PWM Generation CH2 CH2N	TIM1_CH2	PA9
+TIM1	PWM Generation CH2 CH2N	TIM1_CH2N	PB0
+TIM1	PWM Generation CH3 CH3N	TIM1_CH3	PA10
+TIM1	PWM Generation CH3 CH3N	TIM1_CH3N	PB1
+TIM2	Internal Clock	TIM2_VS_ClockSourceINT	VP_TIM2_VS_ClockSourceINT
+TIM8	Internal Clock	TIM8_VS_ClockSourceINT	VP_TIM8_VS_ClockSourceINT
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+9	PC1	ADC1_IN11	ADC1 Throttle
+15	PA1	ADC3_IN1	ADC3 MDC Voltage
+17	PA3	ADC1_IN3	ADC1 Battery Voltage
+23	PA7	TIM1_CH1N	
+25	PC5	ADC2_IN15	ADC2 System Current
+26	PB0	TIM1_CH2N	
+27	PB1	TIM1_CH3N	
+33	PB12	GPIO_Input	Brake Input
+41	PA8	TIM1_CH1	
+42	PA9	TIM1_CH2	
+43	PA10	TIM1_CH3	
+51	PC10	GPIO_Input	H1 GPIO
+52	PC11	GPIO_Input	H2 GPIO
+53	PC12	GPIO_Input	H3 GPIO
+54	PD2	GPIO_Input	Auto Pilot Switch
+PERIPHERALS	MODES	FUNCTIONS	PINS
+ADC1	IN3	ADC1_IN3	PA3
+ADC1	IN11	ADC1_IN11	PC1
+ADC2	IN15	ADC2_IN15	PC5
+ADC3	IN1	ADC3_IN1	PA1
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+TIM1	Internal Clock	TIM1_VS_ClockSourceINT	VP_TIM1_VS_ClockSourceINT
+TIM1	PWM Generation CH1 CH1N	TIM1_CH1	PA8
+TIM1	PWM Generation CH1 CH1N	TIM1_CH1N	PA7
+TIM1	PWM Generation CH2 CH2N	TIM1_CH2	PA9
+TIM1	PWM Generation CH2 CH2N	TIM1_CH2N	PB0
+TIM1	PWM Generation CH3 CH3N	TIM1_CH3	PA10
+TIM1	PWM Generation CH3 CH3N	TIM1_CH3N	PB1
+TIM2	Internal Clock	TIM2_VS_ClockSourceINT	VP_TIM2_VS_ClockSourceINT
+TIM8	Internal Clock	TIM8_VS_ClockSourceINT	VP_TIM8_VS_ClockSourceINT
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+9	PC1	ADC1_IN11	ADC1 Throttle
+15	PA1	ADC3_IN1	ADC3 MDC Voltage
+17	PA3	ADC1_IN3	ADC1 Battery Voltage
+23	PA7	TIM1_CH1N	
+25	PC5	ADC2_IN15	ADC2 System Current
+26	PB0	TIM1_CH2N	
+27	PB1	TIM1_CH3N	
+33	PB12	GPIO_Input	Brake Input
+41	PA8	TIM1_CH1	
+42	PA9	TIM1_CH2	
+43	PA10	TIM1_CH3	
+51	PC10	GPIO_Input	H1 GPIO
+52	PC11	GPIO_Input	H2 GPIO
+53	PC12	GPIO_Input	H3 GPIO
+54	PD2	GPIO_Input	Auto Pilot Switch
+
+
+
+SOFTWARE PROJECT
+
+Project Settings : 
+Project Name : Bachelor
+Project Folder : C:\Users\Rasmu\git\JohanSebastianBachelor\JohanSebastianBachelor\Bachelor
+Toolchain / IDE : STM32CubeIDE
+Firmware Package Name and Version : STM32Cube FW_F4 V1.26.0
+
+
+Code Generation Settings : 
+STM32Cube MCU packages and embedded software packs : Copy only the necessary library files
+Generate peripheral initialization as a pair of '.c/.h' files per peripheral : No
+Backup previously generated files when re-generating : No
+Delete previously generated files when not re-generated : Yes
+Set all free pins as analog (to optimize the power consumption) : No
+
+
+Toolchains Settings : 
+Compiler Optimizations : 
+
+
+
+
+

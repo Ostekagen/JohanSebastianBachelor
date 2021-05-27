@@ -60,10 +60,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define ADC1_Throttle_Pin GPIO_PIN_1
+#define ADC1_Throttle_GPIO_Port GPIOC
 #define ADC3_MDC_Voltage_Pin GPIO_PIN_1
 #define ADC3_MDC_Voltage_GPIO_Port GPIOA
+#define ADC1_Battery_Voltage_Pin GPIO_PIN_3
+#define ADC1_Battery_Voltage_GPIO_Port GPIOA
 #define ADC2_System_Current_Pin GPIO_PIN_5
 #define ADC2_System_Current_GPIO_Port GPIOC
+#define Brake_Input_Pin GPIO_PIN_12
+#define Brake_Input_GPIO_Port GPIOB
 #define H1_GPIO_Pin GPIO_PIN_10
 #define H1_GPIO_GPIO_Port GPIOC
 #define H2_GPIO_Pin GPIO_PIN_11
