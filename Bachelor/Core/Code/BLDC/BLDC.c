@@ -41,8 +41,8 @@ void pfx_BLDC(int8_t int8_state,uint8_t uint8_pos) // Main function for commutat
 					pfx_PWM(0, 3);				// Channel 3 off
 					TIM1->CCER &= 0xFBEB; 		// Turn off Q4 & Q3 & Q2
 					TIM1->CCER |= 0x141;		// Turn on Q1 & Q6 & Q5
-					pfx_PWM(f_dutyCap, 1);		// CH1 - Q1 - Full On
-					pfx_PWM(1, 2);				// CH2N - Q6 - PWM
+					pfx_PWM(f_dutyCap, 1);		// CH1 - Q1 - PWM
+					pfx_PWM(1, 2);				// CH2N - Q6 - Full On
 				}
 			break;
 			case 2 : // 90-150 degrees
@@ -59,8 +59,8 @@ void pfx_BLDC(int8_t int8_state,uint8_t uint8_pos) // Main function for commutat
 					pfx_PWM(0, 1);				// Channel 1 off
 					TIM1->CCER &= 0xFEBB;	 	// Turn off Q4 & Q6 & Q5
 					TIM1->CCER |= 0x411;		// Turn on Q3 & Q2 & Q1
-					pfx_PWM(f_dutyCap, 2);		// CH2 - Q3 - Full On
-					pfx_PWM(1, 3);				// CH3N - Q2 - PWM
+					pfx_PWM(f_dutyCap, 2);		// CH2 - Q3 - PWM
+					pfx_PWM(1, 3);				// CH3N - Q2 - Full on
 				}
 			break;
 			case 4 : // 210-270 degrees
@@ -77,8 +77,8 @@ void pfx_BLDC(int8_t int8_state,uint8_t uint8_pos) // Main function for commutat
 					pfx_PWM(0, 2);				// Channel 2 off
 					TIM1->CCER &= 0xFBBE;	 	// Turn off Q1 & Q6 & Q2
 					TIM1->CCER |= 0x114;		// Turn on Q4 & Q5 & Q3
-					pfx_PWM(1, 1);				// CH1N - Q4 - PWM
-					pfx_PWM(f_dutyCap, 3);		// CH3 - Q5 - Full On
+					pfx_PWM(1, 1);				// CH1N - Q4 - Full On
+					pfx_PWM(f_dutyCap, 3);		// CH3 - Q5 - PWM
 				}
 			break;
 			case 6 : // 330-30 degrees
