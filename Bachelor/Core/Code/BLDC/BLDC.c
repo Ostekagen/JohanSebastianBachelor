@@ -90,16 +90,18 @@ void pfx_BLDC(int8_t int8_state,uint8_t uint8_pos) // Main function for commutat
 					pfx_PWM(f_dutyCap, 3);		// CH3 - Q5 - PWM
 				}
 			break;
-			case 7 : // 330-30 degrees
+			case 7 : // PWM Stop
 				{
-					TIM1->CCER &= 0xFAAA; 		// Turn off Q1 & Q4 & Q3 & Q6 & Q5 & Q2
-					pfx_PWM_Stop();				// Turn off all PWM by applying compare value larger than counter
+					TIM1->CCER &= 0xFBBB; 		// Turn off Q2 & Q4 & Q6
+					TIM1->CCER |= 0x111;		// Turn on Q1 & Q3 & Q5
+					pfx_PWM_Stop();				// Stop all PWM
 				}
 			break;
 			default :
 				{
-					TIM1->CCER &= 0xFAAA; 		// Turn off Q1 & Q4 & Q3 & Q6 & Q5 & Q2
-					pfx_PWM_Stop();				// Turn off all PWM by applying compare value larger than counter
+					TIM1->CCER &= 0xFBBB; 		// Turn off Q2 & Q4 & Q6
+					TIM1->CCER |= 0x111;		// Turn on Q1 & Q3 & Q5
+					pfx_PWM_Stop();				// Stop all PWM
 				}
 		}
 }

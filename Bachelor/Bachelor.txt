@@ -80,7 +80,7 @@ SOFTWARE PROJECT
 
 Project Settings : 
 Project Name : Bachelor
-Project Folder : C:\Users\Rasmu\git\JohanSebastianBachelor\JohanSebastianBachelor\Bachelor
+Project Folder : C:\Users\kenne\git\JohanSebastianBachelor\Bachelor
 Toolchain / IDE : STM32CubeIDE
 Firmware Package Name and Version : STM32Cube FW_F4 V1.26.0
 
