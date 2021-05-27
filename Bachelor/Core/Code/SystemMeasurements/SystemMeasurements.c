@@ -4,17 +4,15 @@
  *  Created on: Mar 26, 2021
  *      Author: Rasmus Bank Mikkelsen
  */
-
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
 
-
+/* Handle Definitions */
 ADC_HandleTypeDef hadc1;
 ADC_HandleTypeDef hadc2;
 ADC_HandleTypeDef hadc3;
-
 
 // Data Struct for system measurements
 struct ST_SYSMEAS{int16_t int16_batteryVol;int16_t int16_hallValue;int16_t motorVolValue;}systemmeasurements;

@@ -29,7 +29,7 @@ uint8_t pfx_error()
 
 		if((HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_10) == 1 && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_11) == 1 && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_12) == 1) || (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_10) == 0 && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_11) == 0 && HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_12) == 0)) // Checking for two faulty Hall element combinations
 			{
-				uint8_errorStatus = 1;	// Hall Status- Set error if Hall faulty TODO: Find correct Hall combinations
+				uint8_errorStatus = 1;	// Hall Status- Set error if Hall faulty
 			}
 		else if(int16_systemCurrent > 4000) 	// Current Status - Check: current > error threshold TODO: Find correct value
 			{

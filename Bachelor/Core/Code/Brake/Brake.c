@@ -10,8 +10,6 @@
 #include <stdio.h>
 #include <stdint.h>
 #include "main.h"
-int iAlive;
-int PinInput;
 /* External Variables */
 
 /* Internal Variables */

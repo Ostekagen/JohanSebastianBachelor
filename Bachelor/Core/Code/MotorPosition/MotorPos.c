@@ -11,19 +11,15 @@
 #include <stdio.h>
 #include <stdint.h>
 
-
  /* External Variables */
 
 /* Variables */
 uint8_t uint8_position = 0;
-
 uint8_t uint8_hallBLDC1 = 0;
 uint8_t uint8_hallBLDC2 = 0;
 uint8_t uint8_hallBLDC3 = 0;
 
-
 /* Start Code Here */
-
 uint8_t pfx_MotorPos() // main function
 {
 uint8_hallBLDC1 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_10); // read value from gpio-pin (5v tolerant)
@@ -57,7 +53,7 @@ else if(uint8_hallBLDC1 == 1 && uint8_hallBLDC2 == 1 && uint8_hallBLDC3 == 0 )
 	}
 else
 	{
-	uint8_position = 7;				// Turn off all PWM by applying compare value larger than counter
+	uint8_position = 7;				// Turn off all PWM
 	}
 
 return uint8_position;

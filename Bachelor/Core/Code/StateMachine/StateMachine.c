@@ -103,7 +103,6 @@ void pfx_stateInterruptFunction()
 								}
 							else if(int16_initCount == 0)		// Setting up charge up of Boot Capacitor
 								{
-									HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
 									TIM1->CCER &= 0xFEEE; 	// Turn off High Channels
 									TIM1->CCER |= 0x444;	// Turn on Low Channels
 									pfx_PWM(1, 1);			// Full signal on CH1N
@@ -113,7 +112,6 @@ void pfx_stateInterruptFunction()
 								}
 							else if(int16_initCount == 2250)			// Enter Standby Mode after 2250 counts (0.15 seconds)
 								{
-									HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
 									int8_state = 0;
 								}
 							int16_initCount++;

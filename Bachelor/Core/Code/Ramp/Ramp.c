@@ -18,14 +18,11 @@
 
 /* External Variables */
 float f_dutyCapRAMP;
-uint16_t int16_throttleCalcRAMP;
+uint16_t uint16_throttleCalcRAMP;
 
 /* Internal Variables */
 float f_lastOutput=0.1;
 float f_gain1 = 1.00033f;
-float f_gain2 = 1.001;
-
-
 
 /* Start Code Here */
 
@@ -33,20 +30,20 @@ float f_gain2 = 1.001;
 float pfx_ramp()
 	{
 
-		int16_throttleCalcRAMP = pfx_throttle();	// Calling Throttle function
+		uint16_throttleCalcRAMP = pfx_throttle();	// Calling Throttle function
 
 		// Scheme 1
-		if ((f_lastOutput == 0) && (int16_throttleCalcRAMP > 0))	// To ensure the throttle output only is zero when the throttle is not pulled
+		if ((f_lastOutput == 0) && (uint16_throttleCalcRAMP > 0))	// To ensure the throttle output only is zero when the throttle is not pulled
 		{
 			f_lastOutput = 0.1;
 		}
-		if (f_lastOutput < int16_throttleCalcRAMP)	// When throttle output is higher than our last output, increase our output
+		if (f_lastOutput < uint16_throttleCalcRAMP)	// When throttle output is higher than our last output, increase our output
 		{
 			f_lastOutput = f_lastOutput*f_gain1;
 		}
-		else if (f_lastOutput >= int16_throttleCalcRAMP)	// When last output is less or equal to the throttle output, set output to throttle output
+		else if (f_lastOutput >= uint16_throttleCalcRAMP)	// When last output is less or equal to the throttle output, set output to throttle output
 		{
-			f_lastOutput = int16_throttleCalcRAMP;
+			f_lastOutput = uint16_throttleCalcRAMP;
 		}
 		else
 		{
