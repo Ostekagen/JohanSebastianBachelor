@@ -7,13 +7,9 @@
 
 /* Includes */
 #include <math.h>
-#include <math.h>
 #include <stdio.h>
 #include <stdint.h>
-#include "BLDC.h"
-#include "Ramp.h"
 #include "Throttle.h"
-#include "MotorPos.h"
 #include "main.h"
 
 /* External Variables */
@@ -51,7 +47,7 @@ float pfx_ramp()
 		}
 
 
-		if (f_dutyCapRAMP > 0.9)
+		if (f_dutyCapRAMP > 0.9) // Capping the duty cycle to 0.9
 		{
 			f_dutyCapRAMP = 0.9;
 		}
