@@ -70,6 +70,8 @@ void Error_Handler(void);
 #define ADC2_System_Current_GPIO_Port GPIOC
 #define Brake_Input_Pin GPIO_PIN_12
 #define Brake_Input_GPIO_Port GPIOB
+#define Q7_Switch_Pin GPIO_PIN_13
+#define Q7_Switch_GPIO_Port GPIOB
 #define H1_GPIO_Pin GPIO_PIN_10
 #define H1_GPIO_GPIO_Port GPIOC
 #define H2_GPIO_Pin GPIO_PIN_11

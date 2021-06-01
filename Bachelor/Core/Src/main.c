@@ -80,27 +80,7 @@ static void MX_TIM6_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-
-extern float BatteryVol; //From ADC_Measurements
-extern float MDCVol; //From ADC_Measurements
-extern float SysCur; //From ADC_Measurements
-extern float H1; //From ADC_Measurements
-extern float H3; //From ADC_Measurements
-extern float H2; //From ADC_Measurements
-extern float Throttle;
-
 /* Test Variables Start */
-extern int16_t int16_initCount;
-int BP = 1;
-int TestState1;
-int TestState2;
-int TestState3;
-int errorStatusTest;
-int brakeTest;
-int overcurrentTest;
-int throttleTest;
-extern struct ST_SYSMEAS systemmeasurements;
-extern volatile uint32_t ADC_DMA_array[]; // Initiating DMA array for reading of ADC values
 /* Test Variables End */
 
 ADC_HandleTypeDef hadc1;
@@ -168,13 +148,11 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 while (1)
-  {
-
-
+	{
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
+	}
   /* USER CODE END 3 */
 }
 
@@ -655,11 +633,21 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(Q7_Switch_GPIO_Port, Q7_Switch_Pin, GPIO_PIN_RESET);
+
   /*Configure GPIO pin : Brake_Input_Pin */
   GPIO_InitStruct.Pin = Brake_Input_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(Brake_Input_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : Q7_Switch_Pin */
+  GPIO_InitStruct.Pin = Q7_Switch_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(Q7_Switch_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : H1_GPIO_Pin H2_GPIO_Pin H3_GPIO_Pin */
   GPIO_InitStruct.Pin = H1_GPIO_Pin|H2_GPIO_Pin|H3_GPIO_Pin;
@@ -672,8 +660,8 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
-  /* Prevent unused argument(s) compilation warning */
-		pfx_stateInterruptFunction();
+	/* Prevent unused argument(s) compilation warning */
+	pfx_stateInterruptFunction();
 }
 /* USER CODE END 4 */
 

@@ -38,6 +38,7 @@ void pfx_stateInterruptFunction()
 					case 0 : // Standby Mode
 					 	{
 					 		pfx_BLDC(1,7);	// Sluk Mosfets og stop PWM
+					 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1); // Turn on Q7
 					 		int8_stateCounter = 0;
 					 		if (pfx_error() != 0) 			// System error activated
 					 		 	{
@@ -82,6 +83,7 @@ void pfx_stateInterruptFunction()
 						{
 							pfx_BLDC(1,7);	// Sluk Mosfets og stop PWM
 							int8_stateCounter = 2;
+							HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); // Turn off Q7
 							if(pfx_error() == 0 && int16_initCount < 2250)	// System error reset (initiation error)
 								{
 									int16_initCount = 0;	// Reset init counter
