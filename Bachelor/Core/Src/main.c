@@ -634,7 +634,17 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(Q7_Switch_GPIO_Port, Q7_Switch_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(Q7_GPIO_Port, Q7_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : LD2_Pin */
+  GPIO_InitStruct.Pin = LD2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : Brake_Input_Pin */
   GPIO_InitStruct.Pin = Brake_Input_Pin;
@@ -642,12 +652,18 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(Brake_Input_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : Q7_Switch_Pin */
-  GPIO_InitStruct.Pin = Q7_Switch_Pin;
+  /*Configure GPIO pin : Q7_Pin */
+  GPIO_InitStruct.Pin = Q7_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(Q7_Switch_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(Q7_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : Power_Button_Pin */
+  GPIO_InitStruct.Pin = Power_Button_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(Power_Button_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : H1_GPIO_Pin H2_GPIO_Pin H3_GPIO_Pin */
   GPIO_InitStruct.Pin = H1_GPIO_Pin|H2_GPIO_Pin|H3_GPIO_Pin;
@@ -661,7 +677,7 @@ static void MX_GPIO_Init(void)
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
 	/* Prevent unused argument(s) compilation warning */
-	pfx_stateInterruptFunction();
+	//pfx_stateInterruptFunction();
 }
 /* USER CODE END 4 */
 

@@ -32,13 +32,24 @@ void pfx_stateInterruptFunction()
 	{
 		pfx_getMeasurement();	// Get measurements
 		pfx_MotorPos();			// Update motor position
-
+		if(pfx_error() == 0)	// Check for error
+			{
+				if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) != 0 ) // Check Power Switch (Power on)
+					{
+			 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1); // Turn on Q7
+			 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1); // Turn on LED
+					}
+				if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == 0) // Check Power Switch (Power off)
+					{
+			 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); // Turn off Q7
+			 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0); // Turn off LED
+					}
+			}
 		switch(int8_state)
 				{
 					case 0 : // Standby Mode
 					 	{
 					 		pfx_BLDC(1,7);	// Sluk Mosfets og stop PWM
-					 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1); // Turn on Q7
 					 		int8_stateCounter = 0;
 					 		if (pfx_error() != 0) 			// System error activated
 					 		 	{
@@ -48,7 +59,7 @@ void pfx_stateInterruptFunction()
 					 			{
 					 				int8_state = 0;				// Set to standby state
 					 			}
-					 		else if (pfx_throttle() > 100) 	// TODO: Find correct value // Throttle activated
+					 		else if (pfx_throttle() > 100 && HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13) != 0)
 					 			{
 					 				int8_state = 1;				// Set to manual state
 					 			}
@@ -84,6 +95,7 @@ void pfx_stateInterruptFunction()
 							pfx_BLDC(1,7);	// Sluk Mosfets og stop PWM
 							int8_stateCounter = 2;
 							HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0); // Turn off Q7
+							HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0); // Turn off LED
 							if(pfx_error() == 0 && int16_initCount < 2250)	// System error reset (initiation error)
 								{
 									int16_initCount = 0;	// Reset init counter
