@@ -73,7 +73,7 @@ void pfx_stateInterruptFunction()
 					 		 	{
 					 		 		int8_state = 2;				// Set to error state
 					 		 	}
-							else if (pfx_brake() !=0)		// System brake activated
+							else if (pfx_brake() !=0 || HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == 0)		// System brake activated
 								{
 									int8_state = 0;				// Set to standby state
 								}

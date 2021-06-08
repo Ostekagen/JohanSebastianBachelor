@@ -28,6 +28,9 @@
 #include "PWM.h"
 #include "BLDC.h"
 #include "MotorPos.h"
+#include "Brake.h"
+#include "Error.h"
+#include "Throttle.h"
 
 /* USER CODE END Includes */
 
@@ -81,6 +84,7 @@ static void MX_TIM6_Init(void);
 /* USER CODE BEGIN 0 */
 
 /* Test Variables Start */
+
 /* Test Variables End */
 
 ADC_HandleTypeDef hadc1;
@@ -149,6 +153,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 while (1)
 	{
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -677,7 +682,7 @@ static void MX_GPIO_Init(void)
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
 	/* Prevent unused argument(s) compilation warning */
-	//pfx_stateInterruptFunction();
+	pfx_stateInterruptFunction();
 }
 /* USER CODE END 4 */
 

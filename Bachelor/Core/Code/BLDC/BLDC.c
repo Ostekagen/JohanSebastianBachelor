@@ -23,15 +23,15 @@ extern int8_t int8_stateCounter; //
 float f_dutyCap; // Setting internal variable for duty cycle - TODO: Remove value after test
 
 /* Start Code Here */
-void pfx_BLDC(int8_t int8_state,uint8_t uint8_pos) // Main function for commutation
+void pfx_BLDC(uint8_t uint8_state,uint8_t uint8_pos) // Main function for commutation
 {
-	if(int8_state == 1)	// Check for Drive Mode
+	if(uint8_state == 1)	// Check for Drive Mode
 		{
 			f_dutyCap = pfx_ramp(); // Manual Mode Duty Cycle
 		}
-	if(int8_state == 4)	// Check for Drive Mode
+	if(uint8_state == 4)	// Check for Drive Mode
 		{
-//			f_dutyCap = pfx_currentControl(int8_stateCounter); // Auto Pilot Duty Cycle
+//			f_dutyCap = pfx_currentControl(int8_stateCounter); // Auto Pilot Duty Cycle - Controller not made yet!
 		}
 
 	switch(uint8_pos)
